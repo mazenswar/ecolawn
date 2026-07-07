@@ -1,0 +1,108 @@
+/* =========================
+  /styles/_tokens.scss
+  Single source of truth for brand tokens
+   ========================= */
+
+/* =========================
+  CLIENT THEME OVERRIDES
+  Change these per project:
+  --color-bg
+  --color-surface
+  --color-text
+  --brand-1 through --brand-5
+  --font-body
+  --font-heading
+   ========================= */
+
+:root {
+	/* Colors */
+	--color-border: #e5e7eb;
+	--color-background-alt: #f9fafb;
+	--color-bg: #fff7f3;
+	--color-surface: #ffffff;
+	--color-text: #4d4d4d;
+	--color-muted: #6b7280;
+	--brand-1: #7f5a83;
+	--brand-2: #f9d8cd;
+	--brand-3: #4c2f6f;
+	--brand-4: #52489f;
+	--brand-5: #c266a7;
+	--accent-1: #174ea6;
+	--success: #0f9d58;
+	--warning: #fbbc05;
+	--danger: #d93025;
+
+	--gradient: linear-gradient(0deg, var(--brand-4) 0%, var(--brand-5) 100%);
+
+	/* Typography */
+	--font-sans:
+		system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+	--font-body: var(--font-lexend);
+	--font-heading: var(--font-serif);
+
+	/* Font size scale */
+	--font-size-xs: 0.75rem; /* 12px */
+	--font-size-sm: 0.875rem; /* 14px */
+	--font-size-md: 1rem; /* 16px */
+	--font-size-lg: 1.125rem; /* 18px */
+	--font-size-xl: 1.25rem; /* 20px */
+	--font-size-2xl: 1.5rem; /* 24px */
+	--font-size-3xl: 1.875rem; /* 30px */
+	--font-size-4xl: 2.25rem; /* 36px */
+
+	/* Spacing scale (4pt base) */
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 20px;
+	--space-6: 24px;
+	--space-7: 28px;
+	--space-8: 32px;
+	--space-10: 40px;
+	--space-12: 48px;
+	--space-16: 64px;
+	--space-32: 128px;
+
+	/* Layout */
+	--max-width: 1200px;
+
+	/* Radii */
+	--radius-sm: 8px;
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--radius-xl: 24px;
+
+	/* Shadows */
+	--shadow-1: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+	--shadow-2: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+	/* Transitions */
+	--transition-fast: 0.15s ease;
+	--transition-base: 0.3s ease;
+	--transition-slow: 0.5s ease;
+
+	/* Z-index scale */
+	--z-below: -1;
+	--z-base: 0;
+	--z-raised: 10;
+	--z-dropdown: 100;
+	--z-nav: 200;
+	--z-modal: 300;
+	--z-toast: 400;
+
+	/* Accessibility */
+	--focus-ring: 2px solid var(--accent-1);
+	--focus-offset: 2px;
+	--min-tap-target: 44px;
+}
+
+/* Dark mode hook if you need it later */
+// @media (prefers-color-scheme: dark) {
+// 	:root {
+// 		--color-bg: #0f0f10;
+// 		--color-surface: #161617;
+// 		--color-text: #e9eaec;
+// 		--color-muted: #a1a1aa;
+// 	}
+// }

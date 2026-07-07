@@ -1,0 +1,17 @@
+.fadeup {
+	opacity: 0;
+	transition: opacity var(--fadeup-duration, 0.5s) ease;
+	transition-delay: var(--fadeup-delay, 0ms);
+
+	&--visible {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.fadeup {
+		opacity: 1;
+		clip-path: none;
+		transition: none;
+	}
+}

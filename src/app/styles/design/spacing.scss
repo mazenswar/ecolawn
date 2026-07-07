@@ -1,0 +1,25 @@
+/* styles/design/spacing.scss */
+
+[data-spacing="compact"] {
+	--space-8: 24px;
+	--space-10: 32px;
+	--space-12: 36px;
+	--space-16: 48px;
+	--space-32: 96px;
+}
+
+[data-spacing="balanced"] {
+	--space-8: 32px;
+	--space-10: 40px;
+	--space-12: 48px;
+	--space-16: 64px;
+	--space-32: 128px;
+}
+
+[data-spacing="airy"] {
+	--space-8: 48px;
+	--space-10: 56px;
+	--space-12: 72px;
+	--space-16: 96px;
+	--space-32: 160px;
+}

@@ -1,0 +1,117 @@
+/* components/sections/BookingCTA/bookingcta.scss */
+@use "../../../styles/mixins" as *;
+
+.booking-cta {
+	/* blockTint provides background */
+}
+
+/* Layout
+   -------------------------------------------- */
+.booking-cta__layout {
+	display: grid;
+	gap: var(--space-10);
+
+	@include respond(md) {
+		grid-template-columns: 1.2fr 1fr;
+		gap: var(--space-16);
+		align-items: center;
+	}
+}
+
+/* Intro
+   -------------------------------------------- */
+.booking-cta__intro {
+	@include flex-column;
+	gap: var(--space-6);
+
+	h2 {
+		margin: 0;
+	}
+
+	.booking-cta__sub {
+		margin: 0;
+		color: var(--color-muted);
+		line-height: 1.7;
+		max-width: 55ch;
+	}
+}
+
+/* Steps
+   -------------------------------------------- */
+.booking-cta__steps {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	@include flex-column;
+	gap: var(--space-4);
+}
+
+.booking-cta__step {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-4);
+}
+
+.booking-cta__step-number {
+	flex-shrink: 0;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background: var(--brand-1);
+	color: #fff;
+	font-weight: 700;
+	font-size: var(--font-size-xs);
+	@include flex-center;
+}
+
+.booking-cta__step-text {
+	padding-top: var(--space-1);
+	line-height: 1.5;
+	color: var(--color-text);
+}
+
+/* CTA card
+   -------------------------------------------- */
+.booking-cta__card {
+	@include respond(md) {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.booking-cta__card-inner {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	padding: var(--space-8);
+	@include flex-column;
+	gap: var(--space-6);
+	align-items: center;
+	text-align: center;
+	width: 100%;
+
+	@include respond(md) {
+		max-width: 320px;
+	}
+
+	.btnPrimary {
+		width: 100%;
+	}
+}
+
+.booking-cta__card-label {
+	margin: 0;
+	font-weight: 600;
+	color: var(--brand-1);
+	font-size: var(--font-size-lg);
+}
+
+/* Disclaimer note
+   -------------------------------------------- */
+.booking-cta__note {
+	margin: 0;
+	font-size: var(--font-size-xs);
+	color: var(--color-muted);
+	line-height: 1.6;
+	max-width: 30ch;
+}

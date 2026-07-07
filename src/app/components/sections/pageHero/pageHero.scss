@@ -1,0 +1,84 @@
+/* components/sections/PageHero/pagehero.scss */
+@use "../../../styles/mixins" as *;
+
+.page-hero {
+	background: var(--color-bg);
+	// padding-bottom: 0;
+}
+
+/* Layout
+   -------------------------------------------- */
+.page-hero__layout {
+	@include flex-column;
+	gap: var(--space-8);
+	justify-content: center;
+	align-items: center;
+	&.has-image,
+	&.has-illustration {
+		@include respond(md) {
+			display: grid;
+			grid-template-columns: 1.2fr 1fr;
+			align-items: center;
+			gap: var(--space-10);
+		}
+	}
+}
+
+/* Centered variant
+   -------------------------------------------- */
+.page-hero--centered {
+	.page-hero__copy {
+		align-items: center;
+		text-align: center;
+		margin-inline: auto;
+	}
+}
+
+/* Copy
+   -------------------------------------------- */
+.page-hero__copy {
+	@include flex-column;
+	gap: var(--space-4);
+	max-width: 65ch;
+
+	h1 {
+		margin: 0;
+	}
+
+	.lead {
+		margin: 0;
+	}
+}
+
+/* Eyebrow
+   -------------------------------------------- */
+.page-hero__eyebrow {
+	margin: 0;
+	color: var(--brand-1);
+}
+
+/* Media
+   -------------------------------------------- */
+.page-hero__media {
+	margin: 0;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: var(--radius-lg);
+	}
+}
+// SVG
+.page-hero__media svg {
+	color: var(--brand-1);
+	width: 100%;
+	height: auto;
+	opacity: 0.9;
+	max-width: 200px;
+	align-self: center;
+	@include respond(md) {
+		max-width: 300px;
+		justify-self: flex-end;
+	}
+}

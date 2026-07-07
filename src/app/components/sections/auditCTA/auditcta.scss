@@ -1,0 +1,117 @@
+@use "../../../styles/mixins" as *;
+
+.audit-cta__layout {
+	display: grid;
+	gap: var(--space-10);
+
+	@include respond(md) {
+		grid-template-columns: 1.2fr 1fr;
+		align-items: center;
+		gap: var(--space-16);
+	}
+}
+
+.audit-cta__copy {
+	@include flex-column;
+	gap: var(--space-5);
+
+	h2 {
+		margin: 0;
+	}
+	.audit-cta__eyebrow {
+		margin: 0;
+	}
+}
+
+.audit-cta__body {
+	margin: 0;
+	color: var(--color-muted);
+	line-height: 1.7;
+	max-width: 55ch;
+}
+
+.audit-cta__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	@include flex-column;
+	gap: var(--space-3);
+}
+
+.audit-cta__item {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-3);
+	font-size: var(--font-size-sm);
+	line-height: 1.5;
+}
+
+.audit-cta__check {
+	flex-shrink: 0;
+	margin-top: 2px;
+	color: var(--brand-1);
+}
+
+.audit-cta__card-wrap {
+	@include respond(md) {
+		display: flex;
+		justify-content: center;
+	}
+}
+
+.audit-cta__card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	padding: var(--space-8);
+	@include flex-column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-6);
+	width: 100%;
+
+	@include respond(md) {
+		max-width: 320px;
+	}
+}
+
+.audit-cta__card-top {
+	@include flex-column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	padding-bottom: var(--space-6);
+	border-bottom: 1px solid var(--color-border);
+	text-align: center;
+}
+
+.audit-cta__card-label {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--brand-1);
+}
+
+.audit-cta__card-price {
+	margin: 0;
+	font-size: var(--font-size-4xl);
+	font-weight: 700;
+	font-family: var(--font-heading);
+	color: var(--color-text);
+	line-height: 1;
+}
+
+.audit-cta__card-description {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	color: var(--color-muted);
+	line-height: 1.5;
+}
+
+.audit-cta__card-bottom {
+	.btnPrimary {
+		width: 100%;
+	}
+}

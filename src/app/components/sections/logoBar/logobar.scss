@@ -1,0 +1,59 @@
+@use "../../../styles/mixins" as *;
+
+.logo-bar {
+	background: var(--color-background-alt);
+	padding-block: var(--space-8);
+}
+
+.logo-bar__inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-6);
+}
+
+.logo-bar__heading {
+	margin: 0;
+	text-align: center;
+	color: var(--color-muted);
+}
+
+.logo-bar__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-8) var(--space-10);
+}
+
+.logo-bar__item {
+	display: flex;
+	align-items: center;
+}
+
+.logo-bar__link {
+	display: inline-flex;
+	align-items: center;
+	opacity: 0.85;
+	transition: opacity var(--transition-fast);
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+		border-radius: var(--radius-sm);
+	}
+}
+
+.logo-bar__img {
+	height: 44px;
+	width: auto;
+	object-fit: contain;
+	display: block;
+}

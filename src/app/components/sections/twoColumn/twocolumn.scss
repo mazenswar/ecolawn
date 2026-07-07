@@ -1,0 +1,141 @@
+/* components/sections/TwoColumn/twocolumn.scss */
+@use "../../../styles/mixins" as *;
+
+.two-col-section {
+	.two-col-section__layout {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-8);
+
+		@include respond(md) {
+			display: grid;
+			grid-template-columns: 1.3fr 1fr;
+			grid-template-rows: auto auto;
+			align-items: start;
+			column-gap: var(--space-10);
+			row-gap: var(--space-8);
+		}
+
+		/* No image — copy takes full width */
+		&.no-image {
+			@include respond(md) {
+				grid-template-columns: 1.2fr 1fr;
+
+				.two-col-section__copy {
+					grid-column: 1;
+					grid-row: 1;
+				}
+
+				.two-col-section__list {
+					grid-column: 2;
+					grid-row: 1;
+					align-self: end;
+					margin-top: var(--space-2);
+				}
+			}
+		}
+
+		/* Flip image to left */
+		&.image-first {
+			@include respond(md) {
+				grid-template-columns: 1fr 1.3fr;
+
+				.two-col-section__media {
+					grid-column: 1;
+					grid-row: 1 / 3;
+				}
+
+				.two-col-section__copy {
+					grid-column: 2;
+					grid-row: 1;
+				}
+
+				.two-col-section__list {
+					grid-column: 2;
+					grid-row: 2;
+				}
+			}
+		}
+	}
+
+	.two-col-section__eyebrow {
+		margin: 0;
+	}
+
+	.two-col-section__copy {
+		@include flex-column;
+		gap: var(--space-4);
+		.two-col-section__sub {
+			margin: 0;
+			color: var(--color-muted);
+			max-width: 55ch;
+		}
+		h2 {
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+		}
+
+		@include respond(md) {
+			grid-column: 1;
+			grid-row: 1;
+		}
+	}
+
+	.two-col-section__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+
+		li {
+			position: relative;
+			padding-left: var(--space-6);
+			line-height: 1.6;
+
+			&::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0.55em;
+				width: 0.6rem;
+				height: 0.6rem;
+				border-radius: 999px;
+				border: 2px solid var(--brand-1);
+			}
+		}
+
+		@include respond(md) {
+			grid-column: 1;
+			grid-row: 2;
+		}
+	}
+
+	.two-col-section__actions {
+		margin-top: var(--space-2);
+	}
+
+	.two-col-section__media {
+		margin: 0;
+		display: block;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			border-radius: var(--radius-lg);
+		}
+
+		@include respond(md) {
+			grid-column: 2;
+			grid-row: 1 / 3;
+			align-self: center;
+			justify-self: end;
+			max-width: 440px;
+		}
+	}
+}

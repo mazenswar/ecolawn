@@ -1,0 +1,101 @@
+/* =========================
+   /styles/base/_reset.scss
+   Small modern reset
+   ========================= */
+
+@use "../mixins" as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+	margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+	list-style: none;
+}
+
+body {
+	min-height: 100vh;
+	line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Focus ring using token
+   -------------------------------------------- */
+:focus-visible {
+	outline: var(--focus-ring);
+	outline-offset: var(--focus-offset);
+}
+
+/* Skip navigation link for keyboard and screen reader users
+   -------------------------------------------- */
+.skip-nav {
+	@include sr-only;
+
+	&:focus {
+		position: fixed;
+		top: var(--space-4);
+		left: var(--space-4);
+		width: auto;
+		height: auto;
+		padding: var(--space-3) var(--space-6);
+		background: var(--brand-1);
+		color: #fff;
+		border-radius: var(--radius-sm);
+		z-index: var(--z-toast);
+		clip: auto;
+		white-space: normal;
+		overflow: visible;
+		margin: 0;
+	}
+}
+// Reduce motion
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

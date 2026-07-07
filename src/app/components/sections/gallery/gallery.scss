@@ -1,0 +1,261 @@
+/* components/sections/Gallery/gallery.scss */
+@use "../../../styles/mixins" as *;
+
+.gallery {
+	background: var(--color-bg);
+}
+
+/* Header
+   -------------------------------------------- */
+.gallery__header {
+	@include flex-column;
+	gap: var(--space-2);
+	margin-bottom: var(--space-8);
+
+	h2 {
+		margin: 0;
+	}
+
+	.gallery__sub {
+		margin: 0;
+		color: var(--color-muted);
+	}
+}
+
+/* Filter tabs
+   -------------------------------------------- */
+.gallery__filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	margin-bottom: var(--space-8);
+}
+
+.gallery__filter {
+	padding: var(--space-2) var(--space-4);
+	border: 1px solid var(--color-border);
+	border-radius: 999px;
+	background: transparent;
+	color: var(--color-text);
+	font: inherit;
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	cursor: pointer;
+	transition:
+		background var(--transition-fast),
+		border-color var(--transition-fast),
+		color var(--transition-fast);
+	min-height: var(--min-tap-target);
+
+	&:hover {
+		background: var(--brand-3);
+		border-color: var(--brand-1);
+	}
+
+	&.is-active {
+		background: var(--brand-1);
+		border-color: var(--brand-1);
+		color: #fff;
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+	}
+}
+
+/* Grid
+   -------------------------------------------- */
+.gallery__grid {
+	display: grid;
+	gap: var(--space-4);
+	grid-template-columns: repeat(2, 1fr);
+
+	@include respond(md) {
+		grid-template-columns: repeat(var(--gallery-cols, 3), 1fr);
+	}
+}
+
+/* Grid item
+   -------------------------------------------- */
+.gallery__item {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--radius-md);
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	background: var(--color-surface);
+	display: block;
+	width: 100%;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: transform var(--transition-base);
+	}
+
+	&:hover img {
+		transform: scale(1.04);
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+	}
+}
+
+/* Hover overlay
+   -------------------------------------------- */
+.gallery__item-overlay {
+	position: absolute;
+	inset: 0;
+	background: color-mix(in oklab, var(--brand-1) 70%, transparent);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity var(--transition-fast);
+
+	span {
+		color: #fff;
+		font-weight: 600;
+		font-size: var(--font-size-lg);
+		letter-spacing: 0.05em;
+	}
+
+	.gallery__item:hover & {
+		opacity: 1;
+	}
+}
+
+/* Before and after
+   -------------------------------------------- */
+.gallery__before-after-list {
+	@include flex-column;
+	gap: var(--space-12);
+}
+
+.gallery__before-after {
+	@include flex-column;
+	gap: var(--space-4);
+}
+
+.gallery__before-after-label {
+	margin: 0;
+	color: var(--brand-1);
+}
+
+.gallery__before-after-grid {
+	display: grid;
+	gap: var(--space-4);
+
+	@include respond(md) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.gallery__before-after-item {
+	margin: 0;
+	position: relative;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.gallery__before-after-badge {
+	position: absolute;
+	top: var(--space-3);
+	left: var(--space-3);
+	background: var(--brand-1);
+	color: #fff;
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	padding: var(--space-1) var(--space-3);
+	border-radius: 999px;
+	z-index: var(--z-raised);
+
+	&.is-after {
+		background: var(--success);
+	}
+}
+
+/* Lightbox
+   -------------------------------------------- */
+.gallery__lightbox {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	border: 0;
+	padding: 0;
+	background: color-mix(in oklab, #000 85%, transparent);
+	z-index: var(--z-modal);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.gallery__lightbox-inner {
+	position: relative;
+	max-width: min(900px, 92vw);
+	width: 100%;
+	cursor: default;
+}
+
+.gallery__lightbox-close {
+	position: absolute;
+	top: calc(-1 * var(--space-10));
+	right: 0;
+	background: transparent;
+	border: 0;
+	color: #fff;
+	font-size: var(--font-size-xl);
+	cursor: pointer;
+	padding: var(--space-2);
+	min-width: var(--min-tap-target);
+	min-height: var(--min-tap-target);
+	@include flex-center;
+	border-radius: var(--radius-sm);
+	transition: background var(--transition-fast);
+
+	&:hover {
+		background: color-mix(in oklab, #fff 20%, transparent);
+	}
+
+	&:focus-visible {
+		outline: 2px solid #fff;
+		outline-offset: 2px;
+	}
+}
+
+.gallery__lightbox-figure {
+	margin: 0;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.gallery__lightbox-caption {
+	padding: var(--space-3) var(--space-4);
+	background: color-mix(in oklab, #000 60%, transparent);
+	color: #fff;
+	font-size: var(--font-size-sm);
+	text-align: center;
+}

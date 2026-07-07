@@ -1,0 +1,38 @@
+/* styles/design/fonts.scss
+   One block per font pairing ID.
+   To add a new pairing: add one block here + one entry in config/design.js
+   ------------------------------------------------------------------ */
+
+[data-font="editorial"] {
+	--font-heading: var(--font-warm-heading);
+	--font-body: var(--font-clean-body);
+}
+
+[data-font="friendly"] {
+	--font-heading: var(--font-earth-heading);
+	--font-body: var(--font-earth-body);
+}
+
+[data-font="clinical"] {
+	--font-heading: var(--font-bold-heading);
+	--font-body: var(--font-bold-body);
+}
+
+[data-font="expressive"] {
+	--font-heading: var(--font-bold-heading);
+	--font-body: var(--font-warm-body);
+}
+
+[data-font="modern"] {
+	--font-heading: var(--font-minimal-heading);
+	--font-body: var(--font-clean-body);
+}
+
+[data-font="grounded"] {
+	--font-heading: var(--font-earth-heading);
+	--font-body: var(--font-warm-body);
+}
+[data-font="binswar"] {
+	--font-heading: var(--font-binswar-heading);
+	--font-body: var(--font-binswar-body);
+}

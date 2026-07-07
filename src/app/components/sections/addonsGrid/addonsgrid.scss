@@ -1,0 +1,94 @@
+@use "../../../styles/mixins" as *;
+
+.addons-grid__header {
+	@include flex-column;
+	gap: var(--space-2);
+	margin-bottom: var(--space-10);
+
+	h2 {
+		margin: 0;
+	}
+
+	.addons-grid__eyebrow {
+		margin: 0;
+	}
+
+	.addons-grid__sub {
+		margin: 0;
+		color: var(--color-muted);
+		max-width: 60ch;
+	}
+}
+
+.addons-grid__grid {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: var(--space-4);
+	grid-template-columns: 1fr;
+
+	@include respond(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include respond(md) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.addon-card {
+	background: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-6);
+	@include flex-column;
+	gap: var(--space-5);
+	justify-content: space-between;
+	height: 100%;
+	transition: border-color var(--transition-base);
+
+	&:hover {
+		border-color: var(--brand-4);
+	}
+}
+
+.addon-card__top {
+	@include flex-column;
+	gap: var(--space-2);
+}
+
+.addon-card__name {
+	margin: 0;
+	font-size: var(--font-size-lg);
+	color: var(--color-text);
+}
+
+.addon-card__description {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	color: var(--color-muted);
+	line-height: 1.6;
+}
+
+.addon-card__bottom {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+	padding-top: var(--space-4);
+	border-top: 1px solid var(--color-border);
+}
+
+.addon-card__price {
+	font-size: var(--font-size-lg);
+	font-weight: 700;
+	font-family: var(--font-heading);
+	color: var(--color-text);
+}
+
+.addon-card__compatibility {
+	font-size: var(--font-size-xs);
+	color: var(--color-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}

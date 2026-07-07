@@ -1,0 +1,166 @@
+/* components/sections/FeatureGrid/featuregrid.scss */
+@use "../../../styles/mixins" as *;
+
+.feature-grid {
+	// background: var(--color-bg);
+}
+
+/* Header
+   -------------------------------------------- */
+.feature-grid__header {
+	@include flex-column;
+	gap: var(--space-3);
+	margin-bottom: var(--space-10);
+	max-width: 60ch;
+
+	h2 {
+		margin: 0;
+	}
+
+	.feature-grid__sub {
+		margin: 0;
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+}
+
+/* List
+   -------------------------------------------- */
+.feature-grid__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Shared icon styles
+   -------------------------------------------- */
+.feature-grid__icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	border-radius: var(--radius-md);
+	background: var(--brand-3);
+	color: var(--brand-1);
+	margin-bottom: var(--space-3);
+	flex-shrink: 0;
+}
+
+/* Shared content styles
+   -------------------------------------------- */
+.feature-grid__content {
+	@include flex-column;
+	gap: var(--space-2);
+}
+
+.feature-grid__title {
+	margin: 0;
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.feature-grid__description {
+	margin: 0;
+	color: var(--color-muted);
+	line-height: 1.6;
+}
+
+/* Footer
+   -------------------------------------------- */
+.feature-grid__footer {
+	margin-top: var(--space-10);
+}
+
+/* ── Variant: accent ────────────────────────────────────────── */
+
+.feature-grid--accent {
+	.feature-grid__list {
+		display: grid;
+		gap: var(--space-6);
+
+		@include respond(md) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-8);
+		}
+	}
+
+	.feature-grid__item {
+		display: flex;
+		align-items: stretch;
+		gap: var(--space-5);
+		padding: var(--space-6);
+		border-radius: var(--radius-md);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+	}
+
+	.feature-grid__accent {
+		flex-shrink: 0;
+		width: 4px;
+		align-self: stretch;
+		border-radius: 999px;
+		background: var(--brand-1);
+	}
+
+	.feature-grid__icon {
+		background: transparent;
+		width: 36px;
+		height: 36px;
+		margin-bottom: var(--space-2);
+		justify-content: flex-start;
+		padding: 0;
+	}
+}
+
+/* ── Variant: icon ──────────────────────────────────────────── */
+
+.feature-grid--icon {
+	.feature-grid__list {
+		display: grid;
+		gap: var(--space-8);
+
+		@include respond(md) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-10);
+		}
+
+		@include respond(lg) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	.feature-grid__item {
+		@include flex-column;
+		gap: var(--space-1);
+	}
+}
+
+/* ── Variant: card ──────────────────────────────────────────── */
+
+.feature-grid--card {
+	.feature-grid__list {
+		display: grid;
+		gap: var(--space-4);
+
+		@include respond(md) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: var(--space-6);
+		}
+
+		@include respond(lg) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	.feature-grid__item {
+		@include flex-column;
+		justify-content: flex-start;
+		gap: var(--space-1);
+		padding: var(--space-6);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+	}
+}

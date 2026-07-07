@@ -1,0 +1,259 @@
+/* components/sections/FAQ/faq.scss */
+@use "../../../styles/mixins" as *;
+
+.faq {
+	background: var(--color-bg);
+}
+
+/* Header
+   -------------------------------------------- */
+.faq__header {
+	@include flex-column;
+	gap: var(--space-4);
+	max-width: 70ch;
+
+	h2 {
+		margin: 0;
+	}
+
+	.faq__sub {
+		margin: 0;
+		color: var(--color-muted);
+	}
+}
+
+/* Search
+   -------------------------------------------- */
+.faq__search {
+	input[type="search"] {
+		width: 100%;
+		max-width: 480px;
+		padding: var(--space-3) var(--space-4);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-surface);
+		color: var(--color-text);
+		font: inherit;
+		font-size: var(--font-size-md);
+		transition: border-color var(--transition-fast);
+
+		// &:focus {
+		// 	outline: none;
+		// 	border-color: var(--brand-1);
+		// 	box-shadow: 0 0 0 3px var(--brand-5);
+		// }
+		// &:focus-visible {
+		// 	outline: none;
+		// 	border-color: var(--brand-1);
+		// 	box-shadow: 0 0 0 3px var(--brand-5);
+		// }
+		&:focus,
+		&:focus-visible {
+			outline: none;
+			border-color: var(--brand-1);
+			box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand-1) 40%, transparent);
+		}
+
+		&::placeholder {
+			color: var(--color-muted);
+		}
+	}
+}
+
+/* Layout
+   -------------------------------------------- */
+.faq__layout {
+	display: grid;
+	gap: var(--space-8);
+	margin-top: var(--space-10);
+
+	&.has-toc {
+		@include respond(md) {
+			grid-template-columns: 220px 1fr;
+			gap: var(--space-12);
+			align-items: start;
+		}
+	}
+}
+
+/* TOC
+   -------------------------------------------- */
+.faq__toc {
+	@include flex-column;
+	gap: var(--space-3);
+
+	@include respond(md) {
+		position: sticky;
+		top: calc(64px + var(--space-6));
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		@include flex-column;
+		gap: var(--space-2);
+	}
+
+	.faq__toc-title {
+		margin: 0;
+		font-weight: 600;
+		font-size: var(--font-size-sm);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--color-muted);
+	}
+
+	.faq__toc-link {
+		font-size: var(--font-size-sm);
+		color: var(--color-text);
+		text-decoration: none;
+		transition: color var(--transition-fast);
+
+		&:hover {
+			color: var(--brand-1);
+		}
+
+		&:focus-visible {
+			outline: var(--focus-ring);
+			outline-offset: var(--focus-offset);
+		}
+	}
+}
+
+/* Group
+   -------------------------------------------- */
+.faq__group {
+	margin-bottom: var(--space-12);
+	scroll-margin-top: var(--space-16);
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.faq__group-title {
+	margin: 0 0 var(--space-4);
+	color: var(--brand-1);
+}
+
+/* Accordion
+   -------------------------------------------- */
+.faq__accordion {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	overflow: hidden;
+}
+
+.faq__item {
+	border-bottom: 1px solid var(--color-border);
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	&[open] .faq__icon::after {
+		transform: scaleY(0);
+	}
+}
+
+.faq__question {
+	list-style: none;
+	cursor: pointer;
+	padding: var(--space-4) var(--space-5);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--space-4);
+	background: var(--color-surface);
+	transition: background var(--transition-fast);
+	min-height: var(--min-tap-target);
+
+	&::-webkit-details-marker {
+		display: none;
+	}
+
+	&:hover {
+		background: var(--color-background-alt);
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+	}
+
+	span:first-child {
+		font-weight: 500;
+		color: var(--color-text);
+		line-height: 1.4;
+	}
+}
+
+/* Plus/minus icon
+   -------------------------------------------- */
+.faq__icon {
+	width: 1rem;
+	height: 1rem;
+	flex-shrink: 0;
+	border: 2px solid var(--brand-1);
+	border-radius: 2px;
+	position: relative;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		translate: -50% -50%;
+		background: var(--brand-1);
+		transition: transform var(--transition-fast);
+	}
+
+	&::before {
+		width: 10px;
+		height: 2px;
+	}
+
+	&::after {
+		width: 2px;
+		height: 10px;
+	}
+}
+
+/* Answer
+   -------------------------------------------- */
+.faq__answer {
+	padding: var(--space-2) var(--space-5) var(--space-5);
+	line-height: 1.7;
+	color: var(--color-text);
+	max-width: 70ch;
+
+	p {
+		margin-top: var(--space-3);
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	a {
+		color: var(--brand-1);
+	}
+}
+
+/* Empty state
+   -------------------------------------------- */
+.faq__empty {
+	background: var(--brand-3);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-6);
+	@include flex-column;
+	gap: var(--space-4);
+
+	p {
+		margin: 0;
+	}
+}

@@ -1,0 +1,174 @@
+/* =========================
+   /styles/base/_globals.scss
+   App-wide defaults
+   ========================= */
+
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+html,
+body {
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-body);
+}
+
+/* Links
+   -------------------------------------------- */
+a {
+	color: var(--brand-1);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	transition: color var(--transition-slow);
+	font-size: inherit;
+}
+
+.link {
+	text-decoration: underline;
+	color: var(--brand-1);
+	width: fit-content;
+	font-size: inherit;
+	transition: color var(--transition-fast);
+
+	&:hover {
+		color: var(--brand-2);
+	}
+}
+
+/* Selection
+   -------------------------------------------- */
+::selection {
+	background: var(--brand-2);
+	color: #1b1b1d;
+}
+
+/* Buttons
+   -------------------------------------------- */
+.btnPrimary,
+.btnSecondary,
+.btnGhost {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem 2rem;
+	border-radius: var(--radius-xl);
+	line-height: 1;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: var(--font-size-md);
+	@include tap-target;
+	@include transition(base);
+}
+
+.btnPrimary {
+	background: var(--brand-1);
+	color: #fff;
+	box-shadow: var(--shadow-1);
+	border: 2px solid transparent;
+
+	&:hover {
+		background: var(--brand-2);
+		color: var(--brand-5);
+	}
+
+	&:focus-visible {
+		@include focus-ring;
+	}
+}
+
+.btnSecondary {
+	background: transparent;
+	border: 2px solid var(--brand-1);
+	color: var(--color-text);
+
+	&:hover {
+		background: var(--brand-1);
+		color: var(--color-surface);
+	}
+
+	&:focus-visible {
+		@include focus-ring;
+	}
+}
+
+.btnGhost {
+	background: transparent;
+	border: 2px solid transparent;
+	color: var(--brand-1);
+
+	&:hover {
+		background: var(--brand-3);
+	}
+
+	&:focus-visible {
+		@include focus-ring;
+	}
+}
+
+/* Cursor
+   -------------------------------------------- */
+a,
+button,
+.btnPrimary,
+.btnSecondary,
+.btnGhost,
+.link {
+	cursor: pointer;
+}
+
+/* Disabled state
+   -------------------------------------------- */
+button:disabled,
+.btnPrimary:disabled,
+.btnSecondary:disabled,
+.btnGhost:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+// Not Found Page
+
+.not-found__page {
+	.not-found__inner {
+		@include flex-column;
+		align-items: flex-start;
+		gap: var(--space-6);
+		max-width: 50ch;
+		padding-block: var(--space-16);
+
+		h1 {
+			margin: 0;
+		}
+
+		.lead {
+			margin: 0;
+		}
+	}
+}
+
+// Error Page
+
+.error__page {
+	.error__inner {
+		@include flex-column;
+		align-items: flex-start;
+		gap: var(--space-6);
+		max-width: 50ch;
+		padding-block: var(--space-16);
+
+		h1 {
+			margin: 0;
+		}
+
+		.lead {
+			margin: 0;
+		}
+	}
+}
+
+// Chip Nav Scoll
+
+[id] {
+	scroll-margin-top: calc(64px + 48px + var(--space-6));
+}

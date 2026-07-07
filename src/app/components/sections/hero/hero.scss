@@ -1,0 +1,326 @@
+/* components/sections/Hero/hero.scss */
+@use "../../../styles/mixins" as *;
+
+/* ── Shared base ────────────────────────────────────────────── */
+
+.hero {
+	&.block {
+		padding-block: var(--space-16);
+	}
+}
+
+.hero__eyebrow {
+	margin: 0;
+	color: var(--brand-1);
+}
+
+.hero__heading {
+	margin: 0;
+	font-family: var(--font-heading);
+}
+
+.hero__subheading {
+	margin: 0;
+	max-width: 58ch;
+}
+
+.hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	margin-top: var(--space-4);
+
+	&--centered {
+		justify-content: center;
+	}
+}
+
+.hero__caption {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-1);
+	padding-top: var(--space-4);
+}
+
+.hero__caption-name {
+	font-family: var(--font-heading);
+	color: var(--brand-1);
+	font-size: var(--font-size-xl);
+	font-weight: 700;
+	margin: 0;
+	text-align: center;
+}
+
+.hero__caption-title {
+	font-family: var(--font-heading);
+	color: var(--color-muted);
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	margin: 0;
+	text-align: center;
+}
+
+/* ── Variant A — Split Contained ───────────────────────────── */
+
+.hero--split-contained {
+	.hero__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-10);
+
+		@include respond(md) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	.hero__copy {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		align-items: center;
+		text-align: center;
+
+		@include respond(md) {
+			align-items: flex-start;
+			text-align: left;
+			max-width: 52ch;
+		}
+	}
+
+	.hero__media--circle {
+		flex-shrink: 0;
+		width: min(400px, 90vw);
+
+		img {
+			width: 100%;
+			height: auto;
+			border-radius: 50%;
+			display: block;
+			aspect-ratio: 1;
+			object-fit: cover;
+		}
+	}
+}
+
+/* ── Variant B — Split Rectangular ─────────────────────────── */
+
+.hero--split-rectangular {
+	.hero__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-10);
+
+		@include respond(md) {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+
+	.hero__copy {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		align-items: flex-start;
+		text-align: left;
+		flex: 1;
+	}
+
+	.hero__media--rect {
+		flex-shrink: 0;
+		width: min(380px, 90vw);
+
+		img {
+			width: 100%;
+			height: auto;
+			display: block;
+			border-radius: var(--radius-md);
+			aspect-ratio: 4 / 5;
+			object-fit: cover;
+		}
+	}
+}
+
+/* ── Variant C — Full Bleed ─────────────────────────────────── */
+
+.hero--full-bleed {
+	.hero__inner {
+		display: flex;
+		flex-direction: column;
+		min-height: 100svh;
+
+		@include respond(md) {
+			flex-direction: row;
+			min-height: 100svh;
+		}
+	}
+
+	.hero__bleed-copy {
+		display: flex;
+		align-items: center;
+		background: var(--color-bg);
+		padding: var(--space-16) var(--space-8);
+		flex: 1;
+
+		@include respond(md) {
+			flex: 0 0 50%;
+			padding: var(--space-16);
+		}
+	}
+
+	.hero__bleed-copy-inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		max-width: 48ch;
+	}
+
+	.hero__bleed-image {
+		position: relative;
+		min-height: 50svh;
+		flex: 1;
+
+		@include respond(md) {
+			flex: 0 0 50%;
+			min-height: 100svh;
+		}
+	}
+}
+
+/* ── Variant D — Asymmetric ─────────────────────────────────── */
+
+.hero--asymmetric {
+	.hero__inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-8);
+		align-items: stretch;
+
+		@include respond(md) {
+			flex-direction: row;
+			align-items: stretch;
+			gap: var(--space-6);
+		}
+	}
+
+	.hero__media--landscape {
+		position: relative;
+		width: 100%;
+		height: 280px;
+		overflow: hidden;
+
+		img {
+			border-radius: 0;
+		}
+
+		@include respond(md) {
+			flex: 0 0 55%;
+			height: auto;
+			min-height: 480px;
+		}
+	}
+
+	.hero__copy--tall {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: var(--space-4);
+		padding: var(--space-6) 0;
+
+		@include respond(md) {
+			flex: 1;
+			padding: var(--space-10) 0;
+		}
+	}
+}
+
+/* ── Variant E — Centered ───────────────────────────────────── */
+
+.hero--centered {
+	.hero__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-10);
+	}
+
+	.hero__copy--centered {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: var(--space-4);
+		max-width: 60ch;
+	}
+
+	.hero__media--wide {
+		width: 100%;
+		max-width: 900px;
+		height: 420px;
+		overflow: hidden;
+		border-radius: var(--radius-lg);
+
+		img {
+			border-radius: inherit;
+		}
+	}
+}
+
+/* ── Variant F — Background Hero ────────────────────────────── */
+
+.hero--background {
+	position: relative;
+	min-height: 90svh;
+	display: flex;
+	align-items: center;
+
+	.hero__bg-image {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	.hero__bg-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: linear-gradient(
+			to right,
+			rgba(0, 0, 0, 0.65) 0%,
+			rgba(0, 0, 0, 0.4) 50%,
+			rgba(0, 0, 0, 0.15) 100%
+		);
+	}
+
+	.hero__bg-content {
+		position: relative;
+		z-index: 2;
+		padding-block: var(--space-16);
+	}
+
+	.hero__copy--light {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		max-width: 56ch;
+
+		h1,
+		.hero__heading {
+			color: #ffffff;
+			margin: 0;
+		}
+
+		.hero__eyebrow {
+			color: rgba(255, 255, 255, 0.8);
+		}
+
+		.hero__subheading {
+			color: rgba(255, 255, 255, 0.88);
+		}
+	}
+}

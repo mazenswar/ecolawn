@@ -1,0 +1,92 @@
+/* components/sections/CardGrid/cardgrid.scss */
+@use "../../../styles/mixins" as *;
+
+.card-grid {
+	.card-grid__header {
+		@include flex-column;
+		gap: var(--space-2);
+
+		h2 {
+			margin: 0;
+		}
+
+		.card-grid__sub {
+			margin: 0;
+			color: var(--color-muted);
+		}
+	}
+
+	.card-grid__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-4);
+		margin-top: var(--space-8);
+
+		@include respond(md) {
+			grid-template-columns: repeat(3, 1fr);
+			gap: var(--space-6);
+			margin-top: var(--space-10);
+		}
+	}
+
+	.card-grid__footer {
+		margin-top: var(--space-8);
+	}
+}
+
+/* Card
+   -------------------------------------------- */
+.card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	text-decoration: none;
+
+	&:focus-visible .card__inner {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+	}
+
+	&:hover .card__inner,
+	&:focus-visible .card__inner {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-2);
+	}
+}
+
+.card__inner {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	padding: var(--space-5);
+	border: 1px solid var(--brand-3);
+	border-radius: var(--radius-lg);
+	background: var(--brand-4);
+	transition:
+		transform var(--transition-fast),
+		box-shadow var(--transition-fast);
+
+	@include respond(md) {
+		padding: var(--space-6);
+	}
+}
+
+.card__title {
+	margin: 0;
+	line-height: 1.25;
+	color: var(--color-text);
+}
+
+.card__description {
+	margin: 0;
+	color: var(--color-text);
+	flex: 1;
+}
+
+.card__cta {
+	margin-top: auto;
+	font-weight: 600;
+	color: var(--brand-1);
+	align-self: flex-start;
+}

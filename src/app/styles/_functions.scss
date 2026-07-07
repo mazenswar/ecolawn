@@ -1,0 +1,27 @@
+/* =========================
+   /styles/_functions.scss
+   Sass functions (pure, return a value)
+   ========================= */
+
+@use "sass:math";
+
+/* Fluid value helper
+   Usage: font-size: clampv(16px, 2.5vw, 24px);
+   -------------------------------------------- */
+@function clampv($min, $pref, $max) {
+	@return clamp(#{$min}, #{$pref}, #{$max});
+}
+
+/* Rem converter
+   Usage: padding: rem(16);  → 1rem
+   -------------------------------------------- */
+@function rem($px) {
+	@return math.div($px, 16) * 1rem;
+}
+
+/* Spacing shorthand
+   Usage: margin: sp(4);  → var(--space-4)
+   -------------------------------------------- */
+@function sp($step) {
+	@return var(--space-#{$step});
+}

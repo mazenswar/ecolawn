@@ -1,0 +1,105 @@
+/* components/sections/Steps/steps.scss */
+@use "../../../styles/mixins" as *;
+
+.steps {
+	/* background variant can be applied via blockTint or blockBrand on the section */
+}
+
+/* Header
+   -------------------------------------------- */
+.steps__header {
+	@include flex-column;
+	gap: var(--space-2);
+	margin-bottom: var(--space-10);
+
+	h2 {
+		margin: 0;
+	}
+
+	.steps__sub {
+		margin: 0;
+		color: var(--color-muted);
+		max-width: 60ch;
+	}
+}
+
+/* Steps list
+   -------------------------------------------- */
+.steps__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-6);
+	max-width: 700px;
+
+	@include respond(md) {
+		gap: var(--space-4);
+	}
+}
+
+/* Individual step
+   -------------------------------------------- */
+.steps__item {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-6);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	padding: var(--space-5) var(--space-6);
+	position: relative;
+
+	@include respond(md) {
+		padding: var(--space-5) var(--space-6) var(--space-5) var(--space-10);
+	}
+}
+
+/* Step number bubble
+   -------------------------------------------- */
+.steps__number {
+	position: relative;
+	flex-shrink: 0;
+	width: 2rem;
+	height: 2rem;
+	background: var(--brand-1);
+	color: #fff;
+	font-weight: 700;
+	font-size: var(--font-size-sm);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@include respond(md) {
+		position: absolute;
+		left: calc(-1rem);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+/* Step content
+   -------------------------------------------- */
+.steps__content {
+	@include flex-column;
+	gap: var(--space-2);
+	flex: 1;
+}
+
+.steps__title {
+	margin: 0;
+	font-size: var(--font-size-lg);
+	font-weight: 600;
+}
+
+.steps__description {
+	margin: 0;
+	line-height: 1.6;
+	color: var(--color-text);
+}
+
+.steps__cta {
+	margin-top: var(--space-10);
+}

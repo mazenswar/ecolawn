@@ -1,0 +1,134 @@
+/* components/sections/AudienceSection/audiencesection.scss */
+@use "../../../styles/mixins" as *;
+
+.audience {
+	background: var(--color-bg);
+}
+
+/* Shared list styles
+   -------------------------------------------- */
+.audience__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	@include flex-column;
+	gap: var(--space-4);
+}
+
+.audience__item {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-3);
+	line-height: 1.5;
+	color: var(--color-text);
+	font-size: var(--font-size-md);
+}
+
+.audience__check {
+	flex-shrink: 0;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background: var(--brand-3);
+	color: var(--brand-1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1px;
+}
+
+/* Shared body and CTA
+   -------------------------------------------- */
+.audience__body {
+	margin: 0;
+	color: var(--color-muted);
+	line-height: 1.7;
+	max-width: 52ch;
+}
+
+.audience__cta {
+	margin-top: var(--space-6);
+}
+
+/* ── Variant: split ─────────────────────────────────────────── */
+
+.audience--split {
+	.audience__split {
+		display: grid;
+		gap: var(--space-10);
+
+		@include respond(md) {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-16);
+			align-items: center;
+		}
+	}
+
+	.audience__left {
+		@include flex-column;
+		gap: var(--space-5);
+
+		h2 {
+			margin: 0;
+		}
+	}
+
+	.audience__right {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		padding: var(--space-8);
+	}
+}
+
+/* ── Variant: typographic ───────────────────────────────────── */
+
+.audience--typographic {
+	.audience__typographic {
+		@include flex-column;
+		gap: var(--space-8);
+		max-width: 720px;
+
+		h2 {
+			margin: 0;
+			font-size: clamp(2rem, 4vw, 3rem);
+			line-height: 1.15;
+		}
+	}
+
+	.audience__list {
+		gap: var(--space-0);
+	}
+
+	.audience__item {
+		padding-block: var(--space-4);
+		border-bottom: 1px solid var(--color-border);
+		font-size: var(--font-size-lg);
+
+		&:first-child {
+			border-top: 1px solid var(--color-border);
+		}
+	}
+}
+
+/* ── Variant: card ──────────────────────────────────────────── */
+
+.audience--card {
+	.audience__card-wrap {
+		@include flex-column;
+		gap: var(--space-6);
+
+		h2 {
+			margin: 0;
+			max-width: 52ch;
+		}
+	}
+
+	.audience__card {
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-xl);
+		padding: var(--space-8) var(--space-10);
+		max-width: 640px;
+	}
+}

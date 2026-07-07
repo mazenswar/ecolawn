@@ -1,0 +1,111 @@
+/* components/sections/Testimonials/testimonials.scss */
+@use "../../../styles/mixins" as *;
+
+.testimonials {
+	/* blockTint provides background */
+}
+
+/* Header
+   -------------------------------------------- */
+.testimonials__header {
+	@include flex-column;
+	gap: var(--space-2);
+	margin-bottom: var(--space-10);
+
+	h2 {
+		margin: 0;
+	}
+
+	.testimonials__sub {
+		margin: 0;
+		color: var(--color-muted);
+	}
+}
+
+/* Grid
+   -------------------------------------------- */
+.testimonials__grid {
+	display: grid;
+	gap: var(--space-6);
+
+	@include respond(md) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	&.is-secondary {
+		margin-top: var(--space-6);
+
+		@include respond(md) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+/* Testimonial card
+   -------------------------------------------- */
+.testimonial {
+	margin: 0;
+	padding: var(--space-6);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	@include flex-column;
+	gap: var(--space-4);
+
+	&--featured {
+		padding: var(--space-8) var(--space-10);
+		border-color: var(--brand-1);
+		background: color-mix(in oklab, var(--brand-1) 4%, var(--color-surface));
+
+		.testimonial__quote {
+			font-size: clamp(1.1rem, 2vw, 1.4rem);
+			line-height: 1.6;
+		}
+	}
+}
+
+/* Quote
+   -------------------------------------------- */
+.testimonial__quote {
+	margin: 0;
+	font-style: italic;
+	line-height: 1.7;
+	color: var(--color-text);
+	flex: 1;
+}
+
+/* Footer
+   -------------------------------------------- */
+.testimonial__footer {
+	@include flex-column;
+	gap: var(--space-1);
+}
+
+.testimonial__name {
+	margin: 0;
+	font-weight: 600;
+	color: var(--brand-1);
+	font-size: var(--font-size-sm);
+}
+
+.testimonial__title {
+	margin: 0;
+	font-size: var(--font-size-xs);
+	color: var(--color-muted);
+}
+
+/* Stars
+   -------------------------------------------- */
+.testimonial__stars {
+	display: flex;
+	gap: 2px;
+}
+
+.testimonial__star {
+	font-size: var(--font-size-md);
+	color: var(--color-border);
+
+	&.is-filled {
+		color: #f59e0b;
+	}
+}

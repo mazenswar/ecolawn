@@ -1,0 +1,121 @@
+@use "../../../styles/mixins" as *;
+
+.pricing-cards__header {
+	@include flex-column;
+	gap: var(--space-2);
+	margin-bottom: var(--space-10);
+
+	h2 {
+		margin: 0;
+	}
+
+	.pricing-cards__eyebrow {
+		margin: 0;
+	}
+
+	.pricing-cards__sub {
+		margin: 0;
+		color: var(--color-muted);
+		max-width: 60ch;
+	}
+}
+
+.pricing-cards__grid {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: var(--space-6);
+
+	@include respond(md) {
+		grid-template-columns: 1fr 1fr;
+		align-items: start;
+	}
+}
+
+.pricing-card {
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	padding: var(--space-8);
+	@include flex-column;
+	gap: var(--space-6);
+	height: 100%;
+}
+
+.pricing-card__top {
+	@include flex-column;
+	gap: var(--space-2);
+}
+
+.pricing-card__name {
+	margin: 0;
+	font-size: var(--font-size-xl);
+}
+
+.pricing-card__description {
+	margin: 0;
+	color: var(--color-muted);
+	line-height: 1.6;
+}
+
+.pricing-card__pricing {
+	@include flex-column;
+	gap: var(--space-1);
+	padding: var(--space-5) 0;
+	border-top: 1px solid var(--color-border);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.pricing-card__price {
+	font-size: var(--font-size-3xl);
+	font-weight: 700;
+	font-family: var(--font-heading);
+	color: var(--color-text);
+	line-height: 1;
+}
+
+.pricing-card__structure {
+	font-size: var(--font-size-sm);
+	color: var(--color-muted);
+}
+
+.pricing-card__delivery {
+	margin: 0;
+	font-size: var(--font-size-sm);
+	color: var(--color-muted);
+}
+
+.pricing-card__delivery-label {
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.pricing-card__inclusions {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	@include flex-column;
+	gap: var(--space-3);
+	flex: 1;
+}
+
+.pricing-card__inclusion {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-3);
+	font-size: var(--font-size-sm);
+	line-height: 1.5;
+}
+
+.pricing-card__check {
+	flex-shrink: 0;
+	margin-top: 2px;
+	color: var(--brand-1);
+}
+
+.pricing-cards__cta {
+	display: flex;
+	justify-content: center;
+	margin-top: var(--space-10);
+}

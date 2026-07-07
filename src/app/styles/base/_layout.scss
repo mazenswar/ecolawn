@@ -1,0 +1,247 @@
+/* =========================
+   /styles/base/_layout.scss
+   Container, section rhythm, grids
+   ========================= */
+
+@use "../mixins" as *;
+
+/* Container
+   -------------------------------------------- */
+.container {
+	width: 100%;
+	max-width: var(--max-width);
+	margin-inline: auto;
+	padding-inline: var(--space-6);
+
+	@include respond(lg) {
+		padding-inline: var(--space-8);
+	}
+}
+
+/* Section block
+   -------------------------------------------- */
+.block {
+	padding-block: var(--space-16);
+
+	@include respond(md) {
+		padding-block: var(--space-32);
+	}
+
+	&__content {
+		width: 100%;
+		max-width: var(--max-width);
+		margin-inline: auto;
+		padding-inline: var(--space-6);
+
+		@include respond(lg) {
+			padding-inline: var(--space-8);
+		}
+	}
+}
+
+/* Surface variants
+   -------------------------------------------- */
+.blockTint {
+	background: var(--color-surface);
+}
+
+.blockBrand {
+	background: var(--brand-3);
+}
+
+.blockDark {
+	background: var(--brand-3);
+	color: var(--color-surface);
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: var(--color-surface);
+	}
+}
+
+/* Grid system
+   -------------------------------------------- */
+.grid {
+	display: grid;
+	gap: var(--space-8);
+
+	@include respond(md) {
+		grid-template-columns: repeat(12, 1fr);
+	}
+}
+
+/* Common column spans
+   -------------------------------------------- */
+.col-12 {
+	grid-column: span 12;
+}
+.col-10 {
+	grid-column: span 12;
+	@include respond(md) {
+		grid-column: span 10;
+	}
+}
+.col-8 {
+	grid-column: span 12;
+	@include respond(md) {
+		grid-column: span 8;
+	}
+}
+.col-6 {
+	grid-column: span 12;
+	@include respond(md) {
+		grid-column: span 6;
+	}
+}
+.col-4 {
+	grid-column: span 12;
+	@include respond(md) {
+		grid-column: span 4;
+	}
+}
+.col-3 {
+	grid-column: span 12;
+	@include respond(md) {
+		grid-column: span 3;
+	}
+}
+
+/* Two column layout
+   -------------------------------------------- */
+.two-col {
+	display: grid;
+	gap: var(--space-8);
+
+	@include respond(md) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.two-col-asymmetric {
+	display: grid;
+	gap: var(--space-8);
+
+	@include respond(md) {
+		grid-template-columns: 1.1fr 0.9fr;
+	}
+}
+
+/* Three column layout
+   -------------------------------------------- */
+.three-col {
+	display: grid;
+	gap: var(--space-8);
+
+	@include respond(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include respond(lg) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* Four column layout
+   -------------------------------------------- */
+.four-col {
+	display: grid;
+	gap: var(--space-6);
+
+	@include respond(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include respond(lg) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* Hero layout
+   -------------------------------------------- */
+.blockHero {
+	.block__content {
+		display: grid;
+		gap: var(--space-8);
+		align-items: center;
+
+		@include respond(md) {
+			grid-template-columns: 1.1fr 0.9fr;
+		}
+	}
+}
+
+.heroImg img {
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-2);
+}
+
+/* Centered content block
+   -------------------------------------------- */
+.blockCentered {
+	text-align: center;
+
+	.block__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* Stack utility
+   -------------------------------------------- */
+.stack {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-6);
+}
+
+.stack-sm {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+}
+
+.stack-lg {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-10);
+}
+
+/* Flex row utilities
+   -------------------------------------------- */
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-4);
+	align-items: center;
+}
+
+.row-between {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-4);
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* Spacer
+   -------------------------------------------- */
+.spacer-sm {
+	height: var(--space-8);
+}
+.spacer-md {
+	height: var(--space-16);
+}
+.spacer-lg {
+	height: var(--space-32);
+}
+
+/* Visually hidden
+   -------------------------------------------- */
+.sr-only {
+	@include sr-only;
+}
