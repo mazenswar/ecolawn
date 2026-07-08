@@ -49,6 +49,7 @@ export default function Steps({ stepsConfig }) {
 
 	return (
 		<section
+			id="steps"
 			className={`block steps ${classNames}`}
 			aria-labelledby="steps-heading"
 		>
@@ -75,7 +76,7 @@ export default function Steps({ stepsConfig }) {
 						<Button
 							className="steps__cta"
 							text="See our full process"
-							href="/process"
+							href="/services/websites/process"
 							variant="secondary"
 						/>
 					) : null}

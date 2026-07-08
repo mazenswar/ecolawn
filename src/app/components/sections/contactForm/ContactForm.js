@@ -1,71 +1,76 @@
-// components/sections/ContactForm/ContactForm.js
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { submitContactForm } from "@/app/actions/contact";
 import "./contactform.scss";
 
-/* =========================
-  CONTACT FORM CONFIGURATION
-  Edit this section per project
-   ========================= */
-
-//    Setup notes:
-// Two things needed before this works:
-
-// Install Resend: npm install resend
-// Add to your .env.local:
-
-// RESEND_API_KEY=your_api_key_here
-// Get a free API key at resend.com. No credit card needed for the free tier.
-
 const formConfig = {
-	heading: "Get in touch",
+	heading: "Get a free quote",
 	subheading:
-		"Have a question or ready to start a project? Send us a message and we will get back to you within one business day.",
+		"Tell us a bit about your property and what you need. We'll follow up with a straightforward quote.",
 	fields: {
 		name: { label: "Your name", placeholder: "Jane Smith" },
-		email: { label: "Email address", placeholder: "jane@yourpractice.com" },
+		email: { label: "Email address", placeholder: "jane@example.com" },
+		phone: { label: "Phone number", placeholder: "(817) 555-0123" },
+		service: {
+			label: "Service interested in",
+			options: [
+				{ value: "", label: "Select a service" },
+				{ value: "lawn-maintenance", label: "Lawn Maintenance Program" },
+				{ value: "moisture-control", label: "Moisture Control add-on" },
+				{ value: "not-sure", label: "Not sure yet" },
+			],
+		},
+		zip: { label: "Zip code", placeholder: "75056" },
+		squareFootage: {
+			label: "Approximate lawn size (sq ft, optional)",
+			placeholder: "e.g. 5,000",
+		},
 		message: {
-			label: "Message",
-			placeholder: "Tell us a little about what you are looking for.",
+			label: "Anything else we should know? (optional)",
+			placeholder: "Tell us about your property or any questions you have",
 		},
 	},
-	submitText: "Send message",
-	successHeading: "Message received",
+	submitText: "Send request",
+	successHeading: "Request received",
 	successMessage:
-		"Thank you for reaching out. We will be in touch within one business day.",
+		"Thanks for reaching out. We will be in touch within three business days.",
 };
 
-/* =========================
-   COMPONENT
-   ========================= */
-
 export default function ContactForm() {
-	const [status, setStatus] = useState("idle"); // idle | loading | success | error
+	const [status, setStatus] = useState("idle");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [errors, setErrors] = useState({});
 	const formRef = useRef(null);
 	const errorRef = useRef(null);
+
 	useEffect(() => {
 		if (status === "error" && errorRef.current) {
 			errorRef.current.focus();
 		}
 	}, [status]);
+
 	function validate(formData) {
 		const errs = {};
 		const name = formData.get("name")?.toString().trim();
 		const email = formData.get("email")?.toString().trim();
-		const message = formData.get("message")?.toString().trim();
+		const phone = formData.get("phone")?.toString().trim();
+		const service = formData.get("service")?.toString().trim();
+		const zip = formData.get("zip")?.toString().trim();
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 		if (!name) errs.name = "Please enter your name.";
 		if (!email) errs.email = "Please enter your email address.";
 		else if (!emailRegex.test(email))
 			errs.email = "Please enter a valid email address.";
-		if (!message) errs.message = "Please enter a message.";
+		if (!phone) errs.phone = "Please enter your phone number.";
+		if (!service) errs.service = "Please select a service.";
+		if (!zip) errs.zip = "Please enter your zip code.";
+		else if (!/^\d{5}$/.test(zip))
+			errs.zip = "Please enter a valid 5-digit zip code.";
 
 		return errs;
 	}
+
 	async function handleSubmit(e) {
 		e.preventDefault();
 		setStatus("loading");
@@ -93,25 +98,41 @@ export default function ContactForm() {
 	}
 
 	return (
-		<section className="block contact-form" aria-labelledby="contact-heading">
+		<section
+			id="quote"
+			className="block contact-form"
+			aria-labelledby="contact-heading"
+		>
 			<div className="block__content container">
 				<div className="contact-form__layout">
-					{/* Left: heading and context */}
 					<div className="contact-form__intro">
 						<h2 id="contact-heading">{formConfig.heading}</h2>
 						<p className="contact-form__sub">{formConfig.subheading}</p>
 					</div>
 
-					{/* Right: form or success state */}
 					<div className="contact-form__body">
 						{status === "success" ? (
 							<div className="contact-form__success" role="alert">
 								<div className="contact-form__success-icon" aria-hidden="true">
-									✓
+									<svg
+										viewBox="0 0 24 24"
+										width="24"
+										height="24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="3"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+									>
+										<path d="M20 6L9 17L4 12" />
+									</svg>
 								</div>
 								<h3>{formConfig.successHeading}</h3>
 								<p>{formConfig.successMessage}</p>
-								<button className="btnGhost" onClick={() => setStatus("idle")}>
+								<button
+									className="btnSecondary"
+									onClick={() => setStatus("idle")}
+								>
 									Send another message
 								</button>
 							</div>
@@ -122,6 +143,16 @@ export default function ContactForm() {
 								noValidate
 								aria-label="Contact form"
 							>
+								{/* Honeypot — hidden from real users, bots fill it in */}
+								<input
+									type="text"
+									name="company"
+									autoComplete="off"
+									tabIndex={-1}
+									aria-hidden="true"
+									className="contact-form__company-url"
+								/>
+
 								{/* Name */}
 								<div className="contact-form__field">
 									<label htmlFor="contact-name">
@@ -175,7 +206,6 @@ export default function ContactForm() {
 											"aria-describedby": "contact-email-error",
 										})}
 									/>
-
 									{errors.email && (
 										<span
 											id="contact-email-error"
@@ -187,14 +217,128 @@ export default function ContactForm() {
 									)}
 								</div>
 
-								{/* Message */}
+								{/* Phone */}
 								<div className="contact-form__field">
-									<label htmlFor="contact-message">
-										{formConfig.fields.message.label}
+									<label htmlFor="contact-phone">
+										{formConfig.fields.phone.label}
 										<span className="contact-form__required" aria-hidden="true">
 											{" "}
 											*
 										</span>
+									</label>
+									<input
+										id="contact-phone"
+										name="phone"
+										type="tel"
+										placeholder={formConfig.fields.phone.placeholder}
+										autoComplete="tel"
+										disabled={status === "loading"}
+										aria-invalid={errors.phone ? "true" : "false"}
+										{...(errors.phone && {
+											"aria-describedby": "contact-phone-error",
+										})}
+									/>
+									{errors.phone && (
+										<span
+											id="contact-phone-error"
+											className="contact-form__field-error"
+											role="alert"
+										>
+											{errors.phone}
+										</span>
+									)}
+								</div>
+
+								{/* Service */}
+								<div className="contact-form__field">
+									<label htmlFor="contact-service">
+										{formConfig.fields.service.label}
+										<span className="contact-form__required" aria-hidden="true">
+											{" "}
+											*
+										</span>
+									</label>
+									<select
+										id="contact-service"
+										name="service"
+										disabled={status === "loading"}
+										aria-invalid={errors.service ? "true" : "false"}
+										defaultValue=""
+										{...(errors.service && {
+											"aria-describedby": "contact-service-error",
+										})}
+									>
+										{formConfig.fields.service.options.map((opt) => (
+											<option key={opt.value} value={opt.value}>
+												{opt.label}
+											</option>
+										))}
+									</select>
+									{errors.service && (
+										<span
+											id="contact-service-error"
+											className="contact-form__field-error"
+											role="alert"
+										>
+											{errors.service}
+										</span>
+									)}
+								</div>
+
+								{/* Zip code */}
+								<div className="contact-form__field">
+									<label htmlFor="contact-zip">
+										{formConfig.fields.zip.label}
+										<span className="contact-form__required" aria-hidden="true">
+											{" "}
+											*
+										</span>
+									</label>
+									<input
+										id="contact-zip"
+										name="zip"
+										type="text"
+										inputMode="numeric"
+										pattern="[0-9]*"
+										maxLength={5}
+										placeholder={formConfig.fields.zip.placeholder}
+										autoComplete="postal-code"
+										disabled={status === "loading"}
+										aria-invalid={errors.zip ? "true" : "false"}
+										{...(errors.zip && {
+											"aria-describedby": "contact-zip-error",
+										})}
+									/>
+									{errors.zip && (
+										<span
+											id="contact-zip-error"
+											className="contact-form__field-error"
+											role="alert"
+										>
+											{errors.zip}
+										</span>
+									)}
+								</div>
+
+								{/* Square footage */}
+								<div className="contact-form__field">
+									<label htmlFor="contact-square-footage">
+										{formConfig.fields.squareFootage.label}
+									</label>
+									<input
+										id="contact-square-footage"
+										name="squareFootage"
+										type="text"
+										inputMode="numeric"
+										placeholder={formConfig.fields.squareFootage.placeholder}
+										disabled={status === "loading"}
+									/>
+								</div>
+
+								{/* Message */}
+								<div className="contact-form__field message">
+									<label htmlFor="contact-message">
+										{formConfig.fields.message.label}
 									</label>
 									<textarea
 										id="contact-message"
@@ -202,23 +346,9 @@ export default function ContactForm() {
 										rows={5}
 										placeholder={formConfig.fields.message.placeholder}
 										disabled={status === "loading"}
-										aria-invalid={errors.message ? "true" : "false"}
-										{...(errors.message && {
-											"aria-describedby": "contact-message-error",
-										})}
 									/>
-
-									{errors.message && (
-										<span
-											id="contact-message-error"
-											className="contact-form__field-error"
-											role="alert"
-										>
-											{errors.message}
-										</span>
-									)}
 								</div>
-								{/* Error message */}
+
 								{status === "error" && (
 									<div
 										className="contact-form__error"
@@ -230,7 +360,6 @@ export default function ContactForm() {
 									</div>
 								)}
 
-								{/* Submit */}
 								<button
 									type="submit"
 									className="btnPrimary"

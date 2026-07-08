@@ -1,0 +1,80 @@
+@use "../../../styles/mixins" as *;
+
+.rate-cards {
+	.rate-cards__header {
+		margin-bottom: var(--space-8);
+
+		h2 {
+			margin: 0 0 var(--space-3);
+		}
+	}
+
+	.rate-cards__intro {
+		margin: 0;
+		max-width: 65ch;
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.rate-cards__grid {
+		list-style: none;
+		margin: 0 0 var(--space-6);
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-5);
+
+		@include respond(md) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.rate-cards__footnote {
+		margin: 0;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		line-height: 1.6;
+		max-width: 70ch;
+	}
+}
+
+.rate-card {
+	background-color: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-1);
+	padding: var(--space-8);
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-2);
+
+	.rate-card__label {
+		margin: 0;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	.rate-card__price {
+		margin: var(--space-1) 0;
+		font-size: 2.5rem;
+		font-weight: var(--font-weight-semibold);
+		color: var(--brand-1);
+		line-height: 1;
+	}
+
+	.rate-card__price-symbol {
+		font-size: 1.5rem;
+		vertical-align: top;
+		margin-right: 2px;
+	}
+
+	.rate-card__note {
+		margin: 0;
+		font-size: var(--font-size-sm);
+		color: var(--color-muted);
+	}
+}

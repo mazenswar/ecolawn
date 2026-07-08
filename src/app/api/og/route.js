@@ -1,7 +1,7 @@
 // app/api/og/route.js
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
-import site from "@/config/site";
+import site from "../../../../config/site";
 import fs from "fs";
 import path from "path";
 

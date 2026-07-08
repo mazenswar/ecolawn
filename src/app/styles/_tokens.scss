@@ -3,6 +3,8 @@
   Single source of truth for brand tokens
    ========================= */
 
+@use "./mixins" as *;
+
 /* =========================
   CLIENT THEME OVERRIDES
   Change these per project:
@@ -95,6 +97,13 @@
 	--focus-ring: 2px solid var(--accent-1);
 	--focus-offset: 2px;
 	--min-tap-target: 44px;
+
+	/* Sticky nav height — kept in sync with .nav so anchor scroll offsets match */
+	--nav-h: 56px;
+
+	@include respond(lg) {
+		--nav-h: 64px;
+	}
 }
 
 /* Dark mode hook if you need it later */

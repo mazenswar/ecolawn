@@ -2,6 +2,7 @@
 @use "../../../styles/mixins" as *;
 
 .card-grid {
+	// background: var(--color-bg);
 	.card-grid__header {
 		@include flex-column;
 		gap: var(--space-2);
@@ -21,11 +22,19 @@
 		grid-template-columns: 1fr;
 		gap: var(--space-4);
 		margin-top: var(--space-8);
+		list-style: none;
+		padding: 0;
+		margin-left: 0;
 
 		@include respond(md) {
 			grid-template-columns: repeat(3, 1fr);
 			gap: var(--space-6);
 			margin-top: var(--space-10);
+		}
+
+		li {
+			display: flex;
+			height: 100%;
 		}
 	}
 
@@ -40,6 +49,7 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	width: 100%;
 	text-decoration: none;
 
 	&:focus-visible .card__inner {
@@ -51,25 +61,57 @@
 	&:focus-visible .card__inner {
 		transform: translateY(-2px);
 		box-shadow: var(--shadow-2);
+		border-color: var(--brand-4);
 	}
 }
 
 .card__inner {
 	height: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-3);
 	padding: var(--space-5);
-	border: 1px solid var(--brand-3);
+	border: 1px solid var(--color-border);
 	border-radius: var(--radius-lg);
-	background: var(--brand-4);
+	background: var(--brand-3);
 	transition:
 		transform var(--transition-fast),
-		box-shadow var(--transition-fast);
+		box-shadow var(--transition-fast),
+		border-color var(--transition-fast);
 
 	@include respond(md) {
 		padding: var(--space-6);
 	}
+}
+
+// blockTint card color
+
+.blockTint.card-grid {
+	// background: var(--brand-5);
+}
+.blockTint {
+	.card__inner {
+		// background: var(--color-bg);
+	}
+}
+
+.card__icon-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	flex-shrink: 0;
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	color: var(--brand-1-bright, var(--brand-1));
+}
+
+.card__icon {
+	width: 24px;
+	height: 24px;
+	stroke-width: 1.75;
 }
 
 .card__title {
@@ -80,13 +122,13 @@
 
 .card__description {
 	margin: 0;
-	color: var(--color-text);
+	color: var(--color-muted);
 	flex: 1;
 }
 
 .card__cta {
 	margin-top: auto;
 	font-weight: 600;
-	color: var(--brand-1);
+	color: var(--brand-1-bright, var(--brand-1));
 	align-self: flex-start;
 }

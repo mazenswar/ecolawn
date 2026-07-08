@@ -1,4 +1,4 @@
-import site from "@/config/site";
+import site from "../../config/site";
 
 export default function sitemap() {
 	return [
@@ -9,28 +9,10 @@ export default function sitemap() {
 			priority: 1,
 		},
 		{
-			url: `${site.url}/about`,
-			lastModified: new Date(),
-			changeFrequency: "monthly",
-			priority: 0.8,
-		},
-		{
-			url: `${site.url}/services`,
-			lastModified: new Date(),
-			changeFrequency: "monthly",
-			priority: 0.8,
-		},
-		{
-			url: `${site.url}/work`,
-			lastModified: new Date(),
-			changeFrequency: "monthly",
-			priority: 0.7,
-		},
-		{
-			url: `${site.url}/contact`,
+			url: `${site.url}/privacy-policy`,
 			lastModified: new Date(),
 			changeFrequency: "yearly",
-			priority: 0.6,
+			priority: 0.3,
 		},
 	];
 }

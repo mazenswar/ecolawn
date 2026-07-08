@@ -23,6 +23,7 @@ export default function FeatureGrid({ featureGridConfig }) {
 
 	return (
 		<section
+			id={id}
 			className={`block feature-grid feature-grid--${variant} ${classNames}`}
 			aria-labelledby={`${id}-heading`}
 		>

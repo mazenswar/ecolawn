@@ -72,3 +72,10 @@ export const minimalHeading = Space_Grotesk({
 	display: "swap",
 	weight: ["700"],
 });
+
+export const ecoLawn = Space_Grotesk({
+	subsets: ["latin"],
+	variable: "--font-minimal-heading",
+	display: "swap",
+	weight: ["700"],
+});

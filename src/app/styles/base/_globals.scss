@@ -167,8 +167,8 @@ button:disabled,
 	}
 }
 
-// Chip Nav Scoll
+// Anchor scroll offset — keeps sticky nav from covering the target section
 
 [id] {
-	scroll-margin-top: calc(64px + 48px + var(--space-6));
+	scroll-margin-top: var(--nav-h);
 }

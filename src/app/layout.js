@@ -22,6 +22,7 @@ import DesignPanel from "./components/ui/designPanel/DesignPanel";
 
 // Root metadata — applies to all pages unless overridden
 export const metadata = generateMeta({
+	title: "Lawn Care in North Texas",
 	path: "/",
 });
 
@@ -44,9 +45,8 @@ export default function RootLayout({ children }) {
 	return (
 		<html
 			lang="en"
-			data-theme="clean"
-			data-font="editorial"
-			data-style="split-contained"
+			data-theme="ecolawn"
+			data-font="modern"
 			data-shape="round"
 			data-spacing="airy"
 			className={fontClasses}
@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
 				<a href="#main-content" className="skip-nav">
 					Skip to main content
 				</a>
-				<DesignPanel />
+				{/* <DesignPanel /> */}
 				<Nav />
 
 				{children}

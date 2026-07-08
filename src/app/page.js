@@ -1,227 +1,167 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from "react";
+import { Sprout, Droplet } from "lucide-react";
+import site from "../../config/site";
+import { formatPhone } from "../../config/formatPhone";
 import Hero from "./components/sections/hero/Hero";
 import CardGrid from "./components/sections/cardGrid/CardGrid";
+import ServiceArea from "./components/sections/serviceArea/ServiceArea";
 import TwoColumn from "./components/sections/twoColumn/TwoColumn";
 import Steps from "./components/sections/steps/Steps";
-import BookingCTA from "./components/sections/bookingCTA/BookingCTA";
-
-// const heroConfig = {
-// 	heading: "Your Heading Here",
-// 	subheading:
-// 		"A brief description of what you do and who you serve. Keep it clear and human.",
-// 	cta: {
-// 		text: "Get started",
-// 		href: "/contact",
-// 		variant: "primary",
-// 	},
-// 	image: {
-// 		src: "/home/profile-hero.jpg",
-// 		alt: "Descriptive alt text",
-// 		width: 400,
-// 		height: 400,
-// 	},
-// 	caption: {
-// 		name: "Your Name",
-// 		title: "Licensed Clinical Psychologist",
-// 	},
-// };
-
-// VARIANT A
-// const heroConfig = {
-// 	variant: "split-contained",
-// 	eyebrow: "Currently accepting new clients",
-// 	heading: "A space to be heard, supported, and understood.",
-// 	subheading:
-// 		"Individual therapy for adults navigating anxiety, life transitions, and relationship challenges. Virtual sessions across New Jersey.",
-// 	cta: {
-// 		text: "Book a free consultation",
-// 		href: "/contact",
-// 		variant: "primary",
-// 	},
-// 	ctaSecondary: { text: "Learn more", href: "/about", variant: "secondary" },
-// 	images: {
-// 		portrait: {
-// 			src: "/hero/variant-abd.jpg",
-// 			alt: "Dr. Sarah Mitchell, Licensed Therapist",
-// 		},
-// 	},
-// 	caption: {
-// 		name: "Dr. Sarah Mitchell",
-// 		title: "Licensed Clinical Social Worker",
-// 	},
-// };
-
-// VARIANT B
-
-// const heroConfig = {
-// 	variant: "split-rectangular",
-// 	eyebrow: "Virtual therapy · New Jersey",
-// 	heading: "Therapy that meets you where you are.",
-// 	subheading:
-// 		"You don't have to navigate this alone. I work with adults facing anxiety, burnout, and major life changes in a warm, judgment-free space.",
-// 	cta: { text: "Get started", href: "/contact", variant: "primary" },
-// 	ctaSecondary: { text: "How it works", href: "/services", variant: "ghost" },
-// 	images: {
-// 		portrait: { src: "/hero/variant-abd.jpg" },
-// 	},
-// 	caption: {
-// 		name: "Dr. Sarah Mitchell",
-// 		title: "LCSW · Anxiety & Life Transitions",
-// 	},
-// };
-
-// VARIANT C
-
-// const heroConfig = {
-// 	variant: "full-bleed",
-// 	eyebrow: "Individual & couples therapy",
-// 	heading: "Find your way back to yourself.",
-// 	subheading:
-// 		"A private, compassionate practice offering evidence-based therapy for adults in New Jersey.",
-// 	cta: {
-// 		text: "Schedule a consultation",
-// 		href: "/contact",
-// 		variant: "primary",
-// 	},
-// 	images: {
-// 		background: { src: "/hero/variant-c.jpg", alt: "" },
-// 	},
-// 	caption: null,
-// };
-
-// VARIANT D
-
-// const heroConfig = {
-// 	variant: "asymmetric",
-// 	heading: "Rooted in care. Grounded in evidence.",
-// 	subheading:
-// 		"Therapy for adults who are ready to do the work. Specializing in anxiety, trauma, and identity.",
-// 	cta: { text: "Book a consultation", href: "/contact", variant: "primary" },
-// 	images: {
-// 		portrait: { src: "/hero/variant-abd.jpg", alt: "Therapy office interior" },
-// 	},
-// 	caption: { name: "Dr. Sam Mitchell", title: "Licensed Psychologist" },
-// };
-
-// VARIANT E
-
-// const heroConfig = {
-// 	variant: "centered",
-// 	eyebrow: "Welcoming new clients",
-// 	heading: "Therapy for the whole person.",
-// 	subheading:
-// 		"A warm, affirming space for adults seeking support with anxiety, relationships, and personal growth. Currently offering virtual sessions across New Jersey.",
-// 	cta: { text: "Start your journey", href: "/contact", variant: "primary" },
-// 	ctaSecondary: {
-// 		text: "Meet your therapist",
-// 		href: "/about",
-// 		variant: "secondary",
-// 	},
-// 	images: {
-// 		portrait: { src: "/hero/variant-e.jpg", alt: "Calm therapy office space" },
-// 	},
-// 	caption: null,
-// };
-
-// VARIANT F
+import ContactForm from "./components/sections/contactForm/ContactForm";
 
 const heroConfig = {
-	variant: "background-hero",
-	eyebrow: "Now accepting new clients",
-	heading: "You deserve a space that feels safe.",
-	subheading:
-		"Individual therapy for adults navigating anxiety, burnout, and life transitions. Virtual sessions across New Jersey.",
-	cta: {
-		text: "Book a free consultation",
-		href: "/contact",
-		variant: "primary",
+	eyebrow: "North Texas Lawn Care",
+	heading: "Reliable lawn care for your North Texas lawn",
+	subheading: `Fertilization, weed control, and insect protection for homes across ${site.serviceAreas.slice(0, -1).join(", ")}, and ${site.serviceAreas.at(-1)}.`,
+	cta: site.phone
+		? {
+				text: `Call ${formatPhone(site.phone)}`,
+				href: `tel:${site.phone}`,
+				variant: "primary",
+			}
+		: {
+				text: "Get a free quote",
+				href: "#quote",
+				variant: "primary",
+			},
+	ctaSecondary: {
+		text: "Get a free quote",
+		href: "#quote",
+		variant: "secondary",
 	},
-	ctaSecondary: { text: "Learn more", href: "/about", variant: "secondary" },
 	images: {
-		landscape: { src: "/hero/variant-e.jpg", alt: "" },
-		portrait: {
-			src: "/hero/variant-abd.jpg",
-			alt: "Calm therapy office space",
+		landscape: {
+			src: "/assets/green-grass.webp",
+			alt: "",
 		},
-		background: { src: "/hero/variant-c.jpg", alt: "" },
 	},
 };
 
-////////////////////////
-///////////////////////
-//////////////////////
-//////////////////////
-////////////////////
-///////////////////
-
-const cardGridConfig = {
-	heading: "What We Can Help With",
+const servicesConfig = {
+	id: "services",
+	heading: "Our services",
 	subheading:
-		"We are here to offer care and perspective as you navigate your journey.",
-	cta: {
-		text: "See all services",
-		href: "/services",
-		variant: "secondary",
-	},
+		"Straightforward lawn care, priced to fit your property — not a one-size-fits-all package.",
 	cards: [
 		{
-			title: "Individual Therapy",
+			id: "lawn-maintenance",
+			href: "#quote",
+			icon: Sprout,
+			title: "Lawn Maintenance Program",
 			description:
-				"A brief description of this service and how it helps your clients.",
-			href: "/services/one",
-			cta: "Learn more",
+				"Ongoing fertilization, weed control, and surface and sub-surface insect control to keep your lawn healthy through every season.",
+			cta: "Get a custom quote",
 		},
 		{
-			title: "Couples Therapy",
+			id: "moisture-control",
+			href: "#quote",
+			icon: Droplet,
+			title: "Moisture Control",
 			description:
-				"A brief description of this service and how it helps your clients.",
-			href: "/services/two",
-			cta: "Learn more",
-		},
-		{
-			title: "Groups",
-			description:
-				"A brief description of this service and how it helps your clients.",
-			href: "/services/three",
-			cta: "Learn more",
+				"An add-on to the maintenance program that helps your lawn hold water evenly, reducing dry patches and runoff.",
+			cta: "Get a custom quote",
 		},
 	],
 };
 
-const twoColumnConfig = {
-	heading: "Our Approach",
-	paragraphs: [
-		"First paragraph of content. Describe your approach, philosophy, or whatever this section is about.",
-		"Second paragraph with more detail. Keep it concise and human.",
+// Zip codes are a best-effort list for these 8 towns — verify before launch.
+const serviceAreaConfig = {
+	id: "service-areas",
+	heading: "Do we service your area?",
+	subheading:
+		"We proudly serve homeowners across these North Texas communities. Enter your zip code to check.",
+	towns: site.serviceAreas,
+	zips: [
+		"75056", // The Colony
+		"75033",
+		"75034",
+		"75035",
+		"75036", // Frisco
+		"75069",
+		"75070",
+		"75071",
+		"75072", // McKinney
+		"75023",
+		"75024",
+		"75025",
+		"75074",
+		"75075",
+		"75093",
+		"75094", // Plano
+		"75029",
+		"75057",
+		"75067",
+		"75077", // Lewisville
+		"76051", // Grapevine
+		"75006",
+		"75007",
+		"75010", // Carrollton
+		"75068", // Little Elm
 	],
-	list: [
-		"First key point about your approach or offering",
-		"Second key point that reinforces your value",
-		"Third key point that builds trust",
+	// Broader North Texas / DFW zip prefixes — not an exact service area,
+	// just close enough to be worth a "we're expanding" nudge instead of a hard no.
+	nearbyPrefixes: ["750", "751", "752", "753", "760", "761", "762"],
+	successMessage: "Yes! We service your area.",
+	nearbyMessage:
+		"We don't currently service this specific area, but we're expanding — reach out anyway.",
+	outsideMessage: "Sorry, you're outside our service area.",
+	classNames: "blockTint",
+};
+
+const aboutConfig = {
+	id: "about",
+	eyebrow: "About EcoLawn Solutions",
+	heading: "Local, family-run lawn care",
+	// Placeholder copy — swap in the owner's real founding story once available.
+	paragraphs: [
+		"EcoLawn Solutions is a small, local lawn care company serving North Texas homeowners with straightforward, reliable service.",
+		"We keep things simple: honest pricing based on your property, dependable scheduling, and lawn care that actually works.",
 	],
 	cta: {
-		text: "Learn more",
-		href: "/about",
+		text: "Get a free quote",
+		href: "#quote",
 		variant: "secondary",
 	},
-	image: {
-		src: "/assets/nurture.jpg",
-		alt: "Descriptive alt text for the image",
-		width: 400,
-		height: 400,
-	},
-	imagePosition: "right", // "left" or "right"
 };
 
-export default function Home() {
+const stepsConfig = {
+	heading: "How it works",
+	subheading: "A simple process from first contact to ongoing care.",
+	cta: false,
+	classNames: "blockTint",
+	steps: [
+		{
+			id: "step-1",
+			title: "Get your free quote",
+			description:
+				"Tell us about your property and what you need. We'll get back to you with a straightforward quote based on your lawn's size.",
+		},
+		{
+			id: "step-2",
+			title: "We confirm scope and schedule",
+			description:
+				"We'll confirm the services you want and set up a schedule that works for you.",
+		},
+		{
+			id: "step-3",
+			title: "Ongoing service begins",
+			description:
+				"Our team takes care of the rest, keeping your lawn healthy all season long.",
+		},
+	],
+};
+
+function Home() {
 	return (
-		<main id="main-content" className="home__page">
+		<main id="main-content">
 			<Hero heroConfig={heroConfig} />
-			<CardGrid cardGridConfig={cardGridConfig} />
-			<TwoColumn twoColumnConfig={twoColumnConfig} />
-			<Steps />
-			<BookingCTA />
+			<CardGrid cardGridConfig={servicesConfig} />
+			<ServiceArea serviceAreaConfig={serviceAreaConfig} />
+			<TwoColumn twoColumnConfig={aboutConfig} />
+			<Steps stepsConfig={stepsConfig} />
+			<ContactForm />
 		</main>
 	);
 }
+
+export default Home;

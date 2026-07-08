@@ -1,4 +1,3 @@
-"use client";
 import FadeUp from "../../ui/fadeUp/FadeUp";
 import StaggerGrid from "../../ui/staggerGrid/StaggerGrid";
 import Button from "../../ui/Button";
@@ -12,11 +11,12 @@ export default function PricingCards({ pricingConfig }) {
 		packages,
 		cta,
 		id = "packages",
+		classNames = "",
 	} = pricingConfig;
 
 	return (
 		<section
-			className="block pricing-cards"
+			className={`block pricing-cards ${classNames}`.trim()}
 			aria-labelledby={`${id}-heading`}
 			id={id}
 		>

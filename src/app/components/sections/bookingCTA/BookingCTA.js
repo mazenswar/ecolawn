@@ -1,5 +1,4 @@
 // components/sections/BookingCTA/BookingCTA.js
-"use client";
 import Button from "../../ui/Button";
 import FadeUp from "../../ui/fadeUp/FadeUp";
 import StaggerGrid from "../../ui/staggerGrid/StaggerGrid";
@@ -39,10 +38,20 @@ import "./bookingcta.scss";
 // };
 
 export default function BookingCTA({ bookingConfig }) {
-	const { heading, subheading, steps, cta, note } = bookingConfig;
+	const {
+		heading,
+		subheading,
+		steps,
+		cta,
+		note,
+		classNames = "",
+	} = bookingConfig;
 
 	return (
-		<section className="block booking-cta" aria-labelledby="booking-heading">
+		<section
+			className={`block booking-cta ${classNames}`.trim()}
+			aria-labelledby="booking-heading"
+		>
 			<div className="block__content container">
 				<div className="booking-cta__layout">
 					{/* Left: heading, subheading, steps */}
@@ -85,6 +94,7 @@ export default function BookingCTA({ bookingConfig }) {
 								variant={cta.variant ?? "primary"}
 								external={cta.external ?? true}
 								trackEvent={cta.trackEvent}
+								className={cta.classNames}
 							/>
 							{note && <p className="booking-cta__note">{note}</p>}
 						</div>

@@ -3,6 +3,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "../ui/Button";
+import site from "../../../../config/site";
 import "./nav.scss";
 
 /* =========================
@@ -10,32 +11,42 @@ import "./nav.scss";
    ========================= */
 
 const logo = {
-	src: "/logo/binswar-white-b.png",
-	alt: "Binswar",
-	width: 140,
-	height: 40,
+	src: "/logo/ecolawn.png",
+	alt: "Eco Lawn Solutions Logo",
+	width: 190,
+	height: 139,
 };
 
 const links = [
 	{
 		label: "Services",
-		items: [
-			{ label: "Audit", href: "/audit" },
-			{ label: "New Website", href: "/new-website" },
-		],
+		href: "#services",
 	},
-	{ label: "About", href: "/about" },
-	{ label: "Process", href: "/process" },
-	{ label: "Work", href: "/work" },
-	// { label: "Contact", href: "/contact" },
+	{
+		label: "Service Areas",
+		href: "#service-areas",
+	},
+	{
+		label: "About",
+		href: "#about",
+	},
+	{
+		label: "How It Works",
+		href: "#steps",
+	},
 ];
 
-const cta = {
-	text: "Book A Consult",
-	href: "https://calendly.com/mazen-binswar/30min",
-	variant: "primary",
-	external: true,
-};
+const cta = site.phone
+	? {
+			text: "Call Now",
+			href: `tel:${site.phone}`,
+			variant: "primary",
+		}
+	: {
+			text: "Get a Quote",
+			href: "#quote",
+			variant: "primary",
+		};
 
 const homeHref = "/";
 

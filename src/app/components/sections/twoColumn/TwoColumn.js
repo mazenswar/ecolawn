@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Button from "../../ui/Button";
 import FadeUp from "../../ui/fadeUp/FadeUp";
@@ -28,7 +27,7 @@ export default function TwoColumn({ twoColumnConfig }) {
 		>
 			<div className="block__content container">
 				<div
-					className={`two-col-section__layout ${imageFirst ? "image-first" : ""} ${!image ? "no-image" : ""}`}
+					className={`two-col-section__layout ${imageFirst ? "image-first" : ""} ${!image ? "no-image" : ""} ${list?.length > 0 && !image ? "has-list" : ""}`.trim()}
 				>
 					<FadeUp as="div" className="two-col-section__copy" delay={0}>
 						{eyebrow && (
@@ -39,6 +38,13 @@ export default function TwoColumn({ twoColumnConfig }) {
 						{paragraphs?.map((para, i) => (
 							<p key={i}>{para}</p>
 						))}
+						{list?.length > 0 && image && (
+							<ul className="two-col-section__list">
+								{list.map((item, i) => (
+									<li key={i}>{item}</li>
+								))}
+							</ul>
+						)}
 						{cta && (
 							<div className="two-col-section__actions">
 								<Button
@@ -59,16 +65,6 @@ export default function TwoColumn({ twoColumnConfig }) {
 						</FadeUp>
 					)}
 
-					{list?.length > 0 && image && (
-						<FadeUp as="div" className="two-col-section__copy" delay={150}>
-							<ul className="two-col-section__list">
-								{list.map((item, i) => (
-									<li key={i}>{item}</li>
-								))}
-							</ul>
-						</FadeUp>
-					)}
-
 					{image && (
 						<FadeUp as="figure" className="two-col-section__media" delay={150}>
 							<Image
@@ -77,7 +73,6 @@ export default function TwoColumn({ twoColumnConfig }) {
 								width={image.width}
 								height={image.height}
 								sizes="(max-width: 768px) 92vw, 420px"
-								style={{ width: "100%", height: "auto" }}
 							/>
 						</FadeUp>
 					)}

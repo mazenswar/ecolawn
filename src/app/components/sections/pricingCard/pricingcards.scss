@@ -11,6 +11,7 @@
 
 	.pricing-cards__eyebrow {
 		margin: 0;
+		color: var(--brand-1-bright);
 	}
 
 	.pricing-cards__sub {
@@ -41,6 +42,12 @@
 	@include flex-column;
 	gap: var(--space-6);
 	height: 100%;
+}
+.blockTint {
+	.pricing-card {
+		background: var(--brand-4);
+		// background: red;
+	}
 }
 
 .pricing-card__top {
@@ -111,7 +118,7 @@
 .pricing-card__check {
 	flex-shrink: 0;
 	margin-top: 2px;
-	color: var(--brand-1);
+	color: var(--brand-1-bright);
 }
 
 .pricing-cards__cta {

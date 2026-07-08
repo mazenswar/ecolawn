@@ -54,19 +54,24 @@
    -------------------------------------------- */
 .page-hero__eyebrow {
 	margin: 0;
-	color: var(--brand-1);
+	color: var(--brand-1-bright);
 }
 
 /* Media
    -------------------------------------------- */
 .page-hero__media {
 	margin: 0;
+	width: 100%;
+	aspect-ratio: 1 / 1; // <-- move this here from img
+	max-width: 400px; // prevents oversize on mobile
 
 	img {
 		display: block;
 		width: 100%;
 		height: auto;
-		border-radius: var(--radius-lg);
+		border-radius: 100%;
+		aspect-ratio: 1 / 1; // keep here too for safety
+		object-fit: cover;
 	}
 }
 // SVG
@@ -81,4 +86,8 @@
 		max-width: 300px;
 		justify-self: flex-end;
 	}
+}
+
+.page-hero__cta {
+	margin-top: var(--space-8);
 }

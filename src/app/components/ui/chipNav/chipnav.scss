@@ -2,14 +2,14 @@
 
 .chip-nav {
 	position: sticky;
-	top: 50px;
+	top: 65px;
 	z-index: var(--z-raised);
 	background: var(--color-bg);
 	border-bottom: 1px solid var(--color-border);
 	padding-block: var(--space-3);
 
 	@include respond(md) {
-		top: 64px;
+		top: 70px;
 	}
 }
 
@@ -76,10 +76,10 @@
 	display: inline-flex;
 	align-items: center;
 	padding: var(--space-2) var(--space-4);
-	background: var(--brand-3);
+	background: var(--brand-1);
 	border-radius: 999px;
 	text-decoration: none;
-	color: var(--color-text);
+	color: var(--brand-5);
 	font-size: var(--font-size-sm);
 	font-weight: 500;
 	box-shadow: var(--shadow-1);
@@ -89,7 +89,7 @@
 	min-height: var(--min-tap-target);
 
 	&:hover {
-		background: var(--brand-4);
+		background: var(--brand-2);
 		transform: translateY(-1px);
 	}
 

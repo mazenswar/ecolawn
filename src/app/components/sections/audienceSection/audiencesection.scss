@@ -2,7 +2,7 @@
 @use "../../../styles/mixins" as *;
 
 .audience {
-	background: var(--color-bg);
+	// background: var(--color-bg);
 }
 
 /* Shared list styles
@@ -29,8 +29,8 @@
 	width: 28px;
 	height: 28px;
 	border-radius: 50%;
-	background: var(--brand-3);
-	color: var(--brand-1);
+	background: var(--brand-1);
+	color: var(--brand-5);
 	display: flex;
 	align-items: center;
 	justify-content: center;

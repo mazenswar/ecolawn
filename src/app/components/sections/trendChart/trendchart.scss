@@ -1,0 +1,58 @@
+@use "../../../styles/mixins" as *;
+
+.trend-chart {
+	.trend-chart__header {
+		margin-bottom: var(--space-8);
+		text-align: center;
+
+		h2 {
+			margin: 0 0 var(--space-3);
+		}
+	}
+
+	.trend-chart__sub {
+		margin: 0 auto;
+		max-width: 60ch;
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+
+	.trend-chart__figure {
+		background-color: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-1);
+		padding: var(--space-6);
+	}
+
+	.trend-chart__svg {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 640 / 260;
+	}
+
+	.trend-chart__axis-label {
+		fill: var(--color-muted);
+		font-size: 11px;
+		font-family: var(--font-body);
+	}
+
+	.trend-chart__value-label {
+		fill: var(--color-text);
+		font-size: 12px;
+		font-weight: 600;
+		font-family: var(--font-heading);
+	}
+
+	.trend-chart__table {
+		@include sr-only;
+	}
+
+	.trend-chart__footnote {
+		margin: var(--space-6) 0 0;
+		text-align: center;
+		font-size: var(--font-size-xs);
+		color: var(--color-muted);
+	}
+}

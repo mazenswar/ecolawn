@@ -25,9 +25,8 @@ export default function ChipNav({ chipNavConfig }) {
 
 		const getOffset = () => {
 			const chipNav = document.querySelector(".chip-nav");
-			return chipNav ? chipNav.getBoundingClientRect().bottom : 80;
+			return chipNav ? chipNav.getBoundingClientRect().height : 80;
 		};
-
 		const getDocumentTop = (el) => {
 			let top = 0;
 			let current = el;
@@ -46,7 +45,14 @@ export default function ChipNav({ chipNavConfig }) {
 			if (!el) return;
 			e.preventDefault();
 			if (isMobile) setOpen(false);
-			el.scrollIntoView({ behavior: "smooth" });
+
+			const offset = getOffset() + 16; // sticky bar height + a little breathing room
+			const elementTop = el.getBoundingClientRect().top + window.scrollY;
+
+			window.scrollTo({
+				top: elementTop - offset,
+				behavior: "smooth",
+			});
 		};
 
 		nav.addEventListener("click", onClick);

@@ -4,6 +4,9 @@
 .faq {
 	background: var(--color-bg);
 }
+.faq.blockTint {
+	background: var(--brand-5);
+}
 
 /* Header
    -------------------------------------------- */
@@ -246,7 +249,7 @@
 /* Empty state
    -------------------------------------------- */
 .faq__empty {
-	background: var(--brand-3);
+	background: var(--brand-7);
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-md);
 	padding: var(--space-6);

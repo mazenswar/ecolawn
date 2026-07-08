@@ -20,6 +20,7 @@
 	}
 	.audit-cta__eyebrow {
 		margin: 0;
+		color: var(--brand-1-bright);
 	}
 }
 
@@ -49,7 +50,7 @@
 .audit-cta__check {
 	flex-shrink: 0;
 	margin-top: 2px;
-	color: var(--brand-1);
+	color: var(--brand-1-bright);
 }
 
 .audit-cta__card-wrap {
@@ -91,7 +92,7 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
-	color: var(--brand-1);
+	color: var(--brand-1-bright);
 }
 
 .audit-cta__card-price {

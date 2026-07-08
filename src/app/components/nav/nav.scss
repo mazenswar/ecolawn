@@ -5,16 +5,11 @@
 @use "../../styles/mixins" as *;
 
 .nav {
-	--nav-h: 56px;
 	position: sticky;
 	top: 0;
 	z-index: var(--z-nav);
 	background: var(--color-surface);
 	box-shadow: var(--shadow-1);
-
-	@include respond(lg) {
-		--nav-h: 64px;
-	}
 }
 
 /* Inner layout
@@ -34,8 +29,12 @@
 	text-decoration: none;
 
 	img {
-		height: 32px;
+		height: 40px;
 		width: auto;
+
+		@include respond(lg) {
+			height: 48px;
+		}
 	}
 	&:focus-visible {
 		outline: var(--focus-ring);
@@ -181,7 +180,7 @@
 	min-height: var(--min-tap-target);
 
 	&:hover {
-		background: var(--color-background-alt);
+		color: var(--brand-1);
 	}
 
 	&:focus-visible {
@@ -290,7 +289,8 @@
 	transition: background var(--transition-fast);
 
 	&:hover {
-		background: var(--color-background-alt);
+		background: var(--brand-1);
+		color: var(--brand-5);
 	}
 
 	&:focus-visible {

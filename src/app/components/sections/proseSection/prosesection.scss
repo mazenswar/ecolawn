@@ -1,0 +1,14 @@
+/* components/sections/ProseSection/prosesection.scss */
+@use "../../../styles/mixins" as *;
+
+.prose-section--centered {
+	.prose {
+		margin-inline: auto;
+		text-align: center;
+	}
+}
+
+.prose-section__heading {
+	margin: 0 0 var(--space-4);
+	font-family: var(--font-heading);
+}

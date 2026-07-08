@@ -19,6 +19,8 @@ export default function StaggerGrid({
 	as: Tag = "div",
 	itemAs = "div",
 	className = "",
+	id,
+	role,
 }) {
 	const [prefersReduced, setPrefersReduced] = useState(getPrefersReduced);
 
@@ -30,7 +32,7 @@ export default function StaggerGrid({
 	}, []);
 
 	return (
-		<Tag className={className || undefined}>
+		<Tag className={className || undefined} role={role} id={id}>
 			{Children.map(children, (child, i) => {
 				if (!isValidElement(child)) return child;
 

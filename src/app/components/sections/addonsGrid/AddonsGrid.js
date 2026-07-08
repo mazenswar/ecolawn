@@ -1,4 +1,3 @@
-"use client";
 import FadeUp from "../../ui/fadeUp/FadeUp";
 import StaggerGrid from "../../ui/staggerGrid/StaggerGrid";
 import "./addonsgrid.scss";

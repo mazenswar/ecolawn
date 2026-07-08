@@ -23,6 +23,7 @@ export default function FAQ({ faqConfig }) {
 		showToc,
 		groups,
 		id = "faq",
+		classNames = "",
 	} = faqConfig;
 
 	const filteredGroups = useMemo(() => {
@@ -47,15 +48,25 @@ export default function FAQ({ faqConfig }) {
 		const el = document.getElementById(hash);
 		if (el?.tagName === "DETAILS") {
 			el.setAttribute("open", "");
-			setTimeout(
-				() => el.scrollIntoView({ behavior: "smooth", block: "start" }),
-				60,
-			);
+
+			// Find the summary inside, since that's the actual interactive
+			// element a keyboard or screen reader user should land on, not
+			// the details wrapper itself.
+			const summary = el.querySelector("summary");
+
+			setTimeout(() => {
+				el.scrollIntoView({ behavior: "smooth", block: "start" });
+				summary?.focus();
+			}, 60);
 		}
 	}, []);
 
 	return (
-		<section className="block faq" aria-labelledby={`${id}-heading`} id={id}>
+		<section
+			className={`block faq ${classNames}`.trim()}
+			aria-labelledby={`${id}-heading`}
+			id={id}
+		>
 			<div className="block__content container">
 				<FadeUp as="div" className="faq__header">
 					<h2 id={`${id}-heading`}>{heading}</h2>

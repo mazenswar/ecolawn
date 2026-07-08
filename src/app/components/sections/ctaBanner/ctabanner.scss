@@ -8,30 +8,32 @@
 
 		h2,
 		.cta-banner__sub {
-			color: var(--color-text);
+			// color: var(--color-text);
 		}
 
 		.cta-banner__sub {
 			opacity: 0.85;
 		}
 
-		.btnSecondary {
-			// border-color: var(--color-surface);
-			// color: var(--color-surface);
+		// .btnSecondary {
+		// 	// border-color: var(--color-surface);
+		// 	// color: var(--color-surface);
+
+		// 	&:hover,
+		// 	&:focus-visible {
+		// 		background: var(--brand-1);
+		// 		color: var(--color-text);
+		// 	}
+		// }
+
+		.btnGhost {
+			border: 2px solid var(--brand-1);
+			color: var(--brand-1);
 
 			&:hover,
 			&:focus-visible {
 				background: var(--brand-1);
-				color: var(--color-text);
-			}
-		}
-
-		.btnGhost {
-			color: var(--color-surface);
-
-			&:hover,
-			&:focus-visible {
-				background: color-mix(in oklab, var(--color-surface) 15%, transparent);
+				color: var(--brand-5);
 			}
 		}
 	}

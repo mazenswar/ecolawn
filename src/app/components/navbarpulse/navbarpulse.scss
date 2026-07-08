@@ -1,0 +1,349 @@
+/* =========================
+   /components/nav/navbarpulse.scss
+   ========================= */
+
+@use "../../styles/mixins" as *;
+
+.pulse-nav-container {
+	background-color: var(--color-bg);
+	width: 100%;
+	position: sticky;
+	top: 0;
+	z-index: var(--z-nav);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.pulse-nav-inner {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--space-6);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 72px;
+}
+
+/* Brand
+   -------------------------------------------- */
+.pulse-brand {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+		border-radius: var(--radius-sm);
+	}
+
+	.brand-text-fallback {
+		color: var(--color-text);
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		letter-spacing: -0.025em;
+	}
+}
+
+/* Collapsible menu wrapper
+   -------------------------------------------- */
+.pulse-collapse-menu {
+	display: flex;
+	align-items: center;
+	gap: var(--space-6);
+
+	@media (max-width: 1023px) {
+		display: none;
+		flex-direction: column;
+		align-items: stretch;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		background-color: var(--color-bg);
+		border-bottom: 1px solid var(--color-border);
+		padding: var(--space-4) 0;
+		max-height: calc(100dvh - 72px);
+		overflow-y: auto;
+
+		&.show {
+			display: flex;
+		}
+	}
+}
+
+.pulse-track-wrap {
+	position: relative;
+}
+
+/* Nav list
+   -------------------------------------------- */
+.pulse-nav-list {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	@media (max-width: 1023px) {
+		flex-direction: column;
+		padding: 0 var(--space-6);
+	}
+}
+
+.pulse-nav-item {
+	position: relative;
+
+	@include respond(lg) {
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 100%;
+			height: 12px;
+		}
+	}
+}
+
+/* Shared link styles — top-level link or button
+   -------------------------------------------- */
+.pulse-link,
+.pulse-toplink {
+	display: flex;
+	align-items: center;
+	gap: var(--space-1);
+	min-height: var(--min-tap-target);
+	color: var(--color-muted);
+	text-decoration: none;
+	font: inherit;
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	padding: 0 var(--space-4);
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	transition: color var(--transition-base);
+
+	&:hover {
+		color: var(--color-text);
+	}
+
+	&.is-active {
+		color: var(--brand-2);
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: -2px;
+		border-radius: var(--radius-sm);
+	}
+
+	@media (max-width: 1023px) {
+		padding: var(--space-3) var(--space-4);
+		width: 100%;
+		justify-content: space-between;
+		border-left: 2px solid transparent;
+		border-radius: 0;
+
+		&.is-active {
+			border-left-color: var(--brand-2);
+			background: rgba(255, 255, 255, 0.04);
+		}
+	}
+}
+
+.pulse-caret {
+	width: 14px;
+	height: 14px;
+	opacity: 0.6;
+	flex-shrink: 0;
+	transition: transform var(--transition-fast);
+}
+
+.pulse-toplink[aria-expanded="true"] .pulse-caret {
+	transform: rotate(180deg);
+}
+
+/* Dropdown panel
+   -------------------------------------------- */
+.pulse-dropdown {
+	@include respond(lg) {
+		position: absolute;
+		top: calc(100% + 12px);
+		left: 0;
+		min-width: 200px;
+		padding: var(--space-2);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		box-shadow: var(--shadow-2);
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(-6px);
+		transition:
+			opacity var(--transition-fast),
+			transform var(--transition-fast);
+		z-index: var(--z-dropdown);
+
+		&.is-open {
+			opacity: 1;
+			pointer-events: auto;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 1023px) {
+		display: none;
+		padding-left: var(--space-4);
+	}
+}
+
+.pulse-nav-item.has-open > .pulse-dropdown {
+	@media (max-width: 1023px) {
+		display: block;
+	}
+}
+
+.pulse-dropdown-link {
+	display: block;
+	padding: var(--space-3) var(--space-4);
+	border-radius: var(--radius-sm);
+	color: var(--color-muted);
+	text-decoration: none;
+	font-size: var(--font-size-sm);
+	transition:
+		color var(--transition-base),
+		background var(--transition-fast);
+
+	&:hover {
+		color: var(--color-text);
+		background: var(--color-background-alt);
+	}
+
+	&.is-active {
+		color: var(--brand-2);
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: -2px;
+		border-radius: var(--radius-sm);
+	}
+
+	@media (max-width: 1023px) {
+		padding: var(--space-2) var(--space-3);
+		border-left: 2px solid transparent;
+		border-radius: 0;
+
+		&.is-active {
+			border-left-color: var(--brand-2);
+		}
+	}
+}
+
+/* Tracker line — top-level items only
+   -------------------------------------------- */
+.pulse-tracker-line {
+	position: absolute;
+	bottom: 0;
+	height: 2px;
+	background: var(--brand-2);
+	transition:
+		left 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+		width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+		opacity 0.2s ease;
+	pointer-events: none;
+	overflow: visible;
+
+	@media (max-width: 1023px) {
+		display: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: opacity 0.2s ease;
+	}
+}
+
+/* CTA
+   -------------------------------------------- */
+.pulse-cta {
+	@media (max-width: 1023px) {
+		padding: var(--space-4) var(--space-6) 0;
+	}
+}
+
+/* Hamburger
+   -------------------------------------------- */
+.pulse-menu-toggler {
+	display: none;
+	cursor: pointer;
+	background: none;
+	border: none;
+	width: var(--min-tap-target);
+	height: var(--min-tap-target);
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius-sm);
+
+	@media (max-width: 1023px) {
+		display: flex;
+	}
+
+	&:focus-visible {
+		outline: var(--focus-ring);
+		outline-offset: var(--focus-offset);
+	}
+
+	.hamburger-box {
+		width: 24px;
+		height: 18px;
+		display: inline-block;
+		position: relative;
+	}
+
+	.hamburger-inner {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+
+		&,
+		&::before,
+		&::after {
+			width: 24px;
+			height: 2px;
+			background-color: var(--color-text);
+			left: 0;
+			transition:
+				transform var(--transition-fast),
+				opacity var(--transition-fast);
+		}
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+		}
+
+		&::before {
+			top: -6px;
+		}
+
+		&::after {
+			bottom: -6px;
+		}
+	}
+
+	&.is-open .hamburger-inner {
+		background-color: transparent;
+
+		&::before {
+			top: 0;
+			transform: rotate(45deg);
+		}
+
+		&::after {
+			bottom: 0;
+			transform: rotate(-45deg);
+		}
+	}
+}

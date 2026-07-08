@@ -5,6 +5,7 @@
 	background: var(--color-bg);
 
 	input,
+	select,
 	textarea {
 		&:focus-visible {
 			outline: none;
@@ -55,7 +56,7 @@
 
 /* Fields
    -------------------------------------------- */
-form {
+.contact-form form {
 	@include flex-column;
 	gap: var(--space-6);
 }
@@ -71,6 +72,7 @@ form {
 	}
 
 	input,
+	select,
 	textarea {
 		width: 100%;
 		padding: var(--space-3) var(--space-4);
@@ -96,8 +98,12 @@ form {
 
 	textarea {
 		resize: vertical;
-		min-height: 120px;
+		min-height: 160px;
 		line-height: 1.6;
+		width: 100%;
+	}
+	&.message {
+		width: 100%;
 	}
 }
 
@@ -119,7 +125,7 @@ form {
 /* Submit button
    -------------------------------------------- */
 .contact-form__body .btnPrimary {
-	width: 100%;
+	width: fit-content;
 	@include tap-target;
 }
 
@@ -142,7 +148,7 @@ form {
 
 	h3 {
 		margin: 0;
-		color: var(--brand-1);
+		color: var(--brand-1-bright);
 	}
 
 	p {
@@ -155,16 +161,33 @@ form {
 .contact-form__success-icon {
 	width: 3rem;
 	height: 3rem;
+	flex-shrink: 0;
 	border-radius: 50%;
 	background: var(--success);
 	color: #fff;
-	font-size: var(--font-size-xl);
-	font-weight: 700;
-	@include flex-center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
 }
 
 .contact-form__field-error {
 	font-size: var(--font-size-xs);
 	color: var(--danger);
 	margin-top: var(--space-1);
+}
+
+/* Honeypot
+   -------------------------------------------- */
+.contact-form__company-url {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
 }

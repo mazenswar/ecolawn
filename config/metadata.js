@@ -99,6 +99,12 @@ export function generateJsonLd(overrides = {}) {
 			},
 		}),
 		...(site.priceRange && { priceRange: site.priceRange }),
+		...(site.serviceAreas && {
+			areaServed: site.serviceAreas.map((town) => ({
+				"@type": "City",
+				name: town,
+			})),
+		}),
 		...(site.hours && {
 			openingHoursSpecification: site.hours.map((h) => ({
 				"@type": "OpeningHoursSpecification",
@@ -107,7 +113,7 @@ export function generateJsonLd(overrides = {}) {
 				closes: h.close,
 			})),
 		}),
-		...(site.social.instagram && {
+		...((site.social.instagram || site.social.linkedin || site.social.twitter) && {
 			sameAs: [
 				site.social.instagram &&
 					`https://instagram.com/${site.social.instagram}`,

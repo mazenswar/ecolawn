@@ -1,0 +1,13 @@
+.simple-cta {
+	.simple-cta__inner {
+		text-align: center;
+		max-width: 60ch;
+		margin: 0 auto;
+	}
+
+	.simple-cta__text {
+		margin: 0 0 var(--space-6);
+		color: var(--color-muted);
+		line-height: 1.6;
+	}
+}
