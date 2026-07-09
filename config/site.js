@@ -10,8 +10,6 @@ const site = {
 		"EcoLawn Solutions provides lawn maintenance, fertilization, weed control, and moisture control for homeowners across The Colony, Frisco, McKinney, Plano, Lewisville, Grapevine, Carrollton, and Little Elm, TX.",
 	url: "https://ecolawn.us",
 	locale: "en_US",
-	// Theme
-	theme: "ecolawn", // "warm" | "clean" | "bold" | "earth" | "minimal"
 	// Analytics
 	analytics: {
 		ga4: null, // or null to disable

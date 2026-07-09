@@ -146,7 +146,7 @@ const stepsConfig = {
 			id: "step-3",
 			title: "Ongoing service begins",
 			description:
-				"Our team takes care of the rest, keeping your lawn healthy all season long.",
+				"We takes care of the rest, keeping your lawn healthy all season long.",
 		},
 	],
 };
