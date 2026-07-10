@@ -13,7 +13,7 @@ const site = {
 	// Analytics
 	analytics: {
 		ga4: null, // or null to disable
-		gtm: null, // "GTM-XXXXXXX" or null
+		gtm: "GTM-MKGG36W6", // "GTM-XXXXXXX" or null
 	},
 	// Contact
 	email: "service@ecolawn.us",
