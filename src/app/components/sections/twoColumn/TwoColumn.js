@@ -3,6 +3,19 @@ import Button from "../../ui/Button";
 import FadeUp from "../../ui/fadeUp/FadeUp";
 import "./twocolumn.scss";
 
+// Bolds a short leading "Label:" segment, e.g. "Fertilization: Regular
+// applications..." — items with no such lead-in render as plain text.
+function ListItem({ item }) {
+	const match = /^([^:]{1,40}):\s*(.+)$/s.exec(item);
+	if (!match) return item;
+	const [, label, rest] = match;
+	return (
+		<>
+			<strong>{label}:</strong> {rest}
+		</>
+	);
+}
+
 export default function TwoColumn({ twoColumnConfig }) {
 	const {
 		id = "two-col",
@@ -41,7 +54,9 @@ export default function TwoColumn({ twoColumnConfig }) {
 						{list?.length > 0 && image && (
 							<ul className="two-col-section__list">
 								{list.map((item, i) => (
-									<li key={i}>{item}</li>
+									<li key={i}>
+										<ListItem item={item} />
+									</li>
 								))}
 							</ul>
 						)}
@@ -60,7 +75,9 @@ export default function TwoColumn({ twoColumnConfig }) {
 					{list?.length > 0 && !image && (
 						<FadeUp as="ul" className="two-col-section__list" delay={150}>
 							{list.map((item, i) => (
-								<li key={i}>{item}</li>
+								<li key={i}>
+									<ListItem item={item} />
+								</li>
 							))}
 						</FadeUp>
 					)}

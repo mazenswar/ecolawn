@@ -5,6 +5,7 @@ import "./contactform.scss";
 
 const formConfig = {
 	heading: "Get a free quote",
+	classNames: "blockTint",
 	subheading:
 		"Tell us a bit about your property and what you need. We'll follow up with a straightforward quote.",
 	fields: {
@@ -17,13 +18,13 @@ const formConfig = {
 				{ value: "", label: "Select a service" },
 				{ value: "lawn-maintenance", label: "Lawn Maintenance Program" },
 				{ value: "moisture-control", label: "Moisture Control add-on" },
+				{ value: "both", label: "Both" },
 				{ value: "not-sure", label: "Not sure yet" },
 			],
 		},
-		zip: { label: "Zip code", placeholder: "75056" },
-		squareFootage: {
-			label: "Approximate lawn size (sq ft, optional)",
-			placeholder: "e.g. 5,000",
+		serviceAddress: {
+			label: "Service address",
+			placeholder: "123 Main St, The Colony, TX 75056",
 		},
 		message: {
 			label: "Anything else we should know? (optional)",
@@ -55,7 +56,7 @@ export default function ContactForm() {
 		const email = formData.get("email")?.toString().trim();
 		const phone = formData.get("phone")?.toString().trim();
 		const service = formData.get("service")?.toString().trim();
-		const zip = formData.get("zip")?.toString().trim();
+		const serviceAddress = formData.get("serviceAddress")?.toString().trim();
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 		if (!name) errs.name = "Please enter your name.";
@@ -64,9 +65,8 @@ export default function ContactForm() {
 			errs.email = "Please enter a valid email address.";
 		if (!phone) errs.phone = "Please enter your phone number.";
 		if (!service) errs.service = "Please select a service.";
-		if (!zip) errs.zip = "Please enter your zip code.";
-		else if (!/^\d{5}$/.test(zip))
-			errs.zip = "Please enter a valid 5-digit zip code.";
+		if (!serviceAddress)
+			errs.serviceAddress = "Please enter the service address.";
 
 		return errs;
 	}
@@ -100,7 +100,7 @@ export default function ContactForm() {
 	return (
 		<section
 			id="quote"
-			className="block contact-form"
+			className={`block contact-form ${formConfig.classNames}`.trim()}
 			aria-labelledby="contact-heading"
 		>
 			<div className="block__content container">
@@ -285,54 +285,36 @@ export default function ContactForm() {
 									)}
 								</div>
 
-								{/* Zip code */}
+								{/* Service address */}
 								<div className="contact-form__field">
-									<label htmlFor="contact-zip">
-										{formConfig.fields.zip.label}
+									<label htmlFor="contact-service-address">
+										{formConfig.fields.serviceAddress.label}
 										<span className="contact-form__required" aria-hidden="true">
 											{" "}
 											*
 										</span>
 									</label>
 									<input
-										id="contact-zip"
-										name="zip"
+										id="contact-service-address"
+										name="serviceAddress"
 										type="text"
-										inputMode="numeric"
-										pattern="[0-9]*"
-										maxLength={5}
-										placeholder={formConfig.fields.zip.placeholder}
-										autoComplete="postal-code"
+										placeholder={formConfig.fields.serviceAddress.placeholder}
+										autoComplete="street-address"
 										disabled={status === "loading"}
-										aria-invalid={errors.zip ? "true" : "false"}
-										{...(errors.zip && {
-											"aria-describedby": "contact-zip-error",
+										aria-invalid={errors.serviceAddress ? "true" : "false"}
+										{...(errors.serviceAddress && {
+											"aria-describedby": "contact-service-address-error",
 										})}
 									/>
-									{errors.zip && (
+									{errors.serviceAddress && (
 										<span
-											id="contact-zip-error"
+											id="contact-service-address-error"
 											className="contact-form__field-error"
 											role="alert"
 										>
-											{errors.zip}
+											{errors.serviceAddress}
 										</span>
 									)}
-								</div>
-
-								{/* Square footage */}
-								<div className="contact-form__field">
-									<label htmlFor="contact-square-footage">
-										{formConfig.fields.squareFootage.label}
-									</label>
-									<input
-										id="contact-square-footage"
-										name="squareFootage"
-										type="text"
-										inputMode="numeric"
-										placeholder={formConfig.fields.squareFootage.placeholder}
-										disabled={status === "loading"}
-									/>
 								</div>
 
 								{/* Message */}

@@ -1,18 +1,16 @@
 import React from "react";
-import { Sprout, Droplet } from "lucide-react";
 import site from "../../config/site";
 import { formatPhone } from "../../config/formatPhone";
 import Hero from "./components/sections/hero/Hero";
-import CardGrid from "./components/sections/cardGrid/CardGrid";
-import ServiceArea from "./components/sections/serviceArea/ServiceArea";
 import TwoColumn from "./components/sections/twoColumn/TwoColumn";
-import Steps from "./components/sections/steps/Steps";
 import ContactForm from "./components/sections/contactForm/ContactForm";
 
 const heroConfig = {
 	eyebrow: "North Texas Lawn Care",
-	heading: "Reliable lawn care for your North Texas lawn",
-	subheading: `Fertilization, weed control, and insect protection for homes across ${site.serviceAreas.slice(0, -1).join(", ")}, and ${site.serviceAreas.at(-1)}.`,
+	heading:
+		"Fertilization, Weed Control, Insect Control & Moisture Control",
+	subheading:
+		"Professional lawn care in the North DFW area, including surface and sub-surface insect protection.",
 	cta: site.phone
 		? {
 				text: `Call ${formatPhone(site.phone)}`,
@@ -37,117 +35,56 @@ const heroConfig = {
 	},
 };
 
-const servicesConfig = {
+const lawnMaintenanceConfig = {
 	id: "services",
-	heading: "Our services",
-	subheading:
-		"Straightforward lawn care, priced to fit your property — not a one-size-fits-all package.",
-	cards: [
-		{
-			id: "lawn-maintenance",
-			href: "#quote",
-			icon: Sprout,
-			title: "Lawn Maintenance Program",
-			description:
-				"Ongoing fertilization, weed control, and surface and sub-surface insect control to keep your lawn healthy through every season.",
-			cta: "Get a custom quote",
-		},
-		{
-			id: "moisture-control",
-			href: "#quote",
-			icon: Droplet,
-			title: "Moisture Control",
-			description:
-				"An add-on to the maintenance program that helps your lawn hold water evenly, reducing dry patches and runoff.",
-			cta: "Get a custom quote",
-		},
+	eyebrow: "Our Services",
+	heading: "Lawn Maintenance Program",
+	paragraphs: [
+		"A healthy, beautiful lawn starts with the right care throughout the year. Our Lawn Maintenance program is designed to keep your grass green, healthy, and protected with a customized treatment plan tailored to your lawn's needs.",
+		"With scheduled applications and professional care, we take the guesswork out of lawn maintenance so you can enjoy a thick, healthy lawn all season long.",
 	],
+	list: [
+		"Fertilization: Regular applications of premium fertilizers to encourage strong root development, vibrant color, and healthy growth.",
+		"Weed Control: Targeted pre-emergent and post-emergent treatments to prevent and eliminate common weeds, helping your lawn stay clean and weed-free.",
+		"Insect Control: Treatments to help protect your lawn from damaging insects that can weaken or destroy healthy turf.",
+	],
+	cta: {
+		text: "Get a custom quote",
+		href: "#quote",
+		variant: "secondary",
+	},
 };
 
-// Zip codes are a best-effort list for these 8 towns — verify before launch.
-const serviceAreaConfig = {
-	id: "service-areas",
-	heading: "Do we service your area?",
-	subheading:
-		"We proudly serve homeowners across these North Texas communities. Enter your zip code to check.",
-	towns: site.serviceAreas,
-	zips: [
-		"75056", // The Colony
-		"75033",
-		"75034",
-		"75035",
-		"75036", // Frisco
-		"75069",
-		"75070",
-		"75071",
-		"75072", // McKinney
-		"75023",
-		"75024",
-		"75025",
-		"75074",
-		"75075",
-		"75093",
-		"75094", // Plano
-		"75029",
-		"75057",
-		"75067",
-		"75077", // Lewisville
-		"76051", // Grapevine
-		"75006",
-		"75007",
-		"75010", // Carrollton
-		"75068", // Little Elm
+const moistureControlConfig = {
+	id: "moisture-control",
+	eyebrow: "Our Services",
+	heading: "Moisture Control",
+	paragraphs: [
+		"Our Moisture Control treatment helps your lawn make the most of every watering by improving moisture retention in the soil and delivering water directly to the grass's root zone. This allows your lawn to stay healthier while using less water, potentially reducing irrigation by up to 50%.",
+		"This treatment is an excellent option for homeowners looking to conserve water while maintaining a lush, healthy lawn throughout the growing season.",
 	],
-	// Broader North Texas / DFW zip prefixes — not an exact service area,
-	// just close enough to be worth a "we're expanding" nudge instead of a hard no.
-	nearbyPrefixes: ["750", "751", "752", "753", "760", "761", "762"],
-	successMessage: "Yes! We service your area.",
-	nearbyMessage:
-		"We don't currently service this specific area, but we're expanding — reach out anyway.",
-	outsideMessage: "Sorry, you're outside our service area.",
+	list: [
+		"Reduces watering needs by up to 50%",
+		"Delivers moisture directly to the root system",
+		"Promotes deeper, healthier root growth",
+		"Helps reduce the risk of fungal diseases caused by excess surface moisture",
+		"Improves your lawn's resilience during hot, dry, and drought conditions",
+	],
+	cta: {
+		text: "Get a custom quote",
+		href: "#quote",
+		variant: "secondary",
+	},
 	classNames: "blockTint",
 };
 
 const aboutConfig = {
 	id: "about",
 	eyebrow: "About EcoLawn Solutions",
-	heading: "Local, family-run lawn care",
-	// Placeholder copy — swap in the owner's real founding story once available.
+	heading: "Meet Zach Hayden",
 	paragraphs: [
-		"EcoLawn Solutions is a small, local lawn care company serving North Texas homeowners with straightforward, reliable service.",
-		"We keep things simple: honest pricing based on your property, dependable scheduling, and lawn care that actually works.",
-	],
-	cta: {
-		text: "Get a free quote",
-		href: "#quote",
-		variant: "secondary",
-	},
-};
-
-const stepsConfig = {
-	heading: "How it works",
-	subheading: "A simple process from first contact to ongoing care.",
-	cta: false,
-	classNames: "blockTint",
-	steps: [
-		{
-			id: "step-1",
-			title: "Get your free quote",
-			description:
-				"Tell us about your property and what you need. We'll get back to you with a straightforward quote based on your lawn's size.",
-		},
-		{
-			id: "step-2",
-			title: "We confirm scope and schedule",
-			description:
-				"We'll confirm the services you want and set up a schedule that works for you.",
-		},
-		{
-			id: "step-3",
-			title: "Ongoing service begins",
-			description:
-				"We takes care of the rest, keeping your lawn healthy all season long.",
-		},
+		"My name is Zach Hayden, and I am the owner and operator of the business. With over five years of experience in the lawn care industry, I have gained the knowledge and hands-on experience needed to provide dependable, high-quality lawn care services.",
+		"After years of working in the industry, I decided to take the next step and start my own business. My goal is simple: to provide reliable service, quality work, and attention to detail that customers can count on. I take pride in every property I work on and look forward to helping my customers keep their lawns looking their best.",
 	],
 };
 
@@ -155,10 +92,9 @@ function Home() {
 	return (
 		<main id="main-content">
 			<Hero heroConfig={heroConfig} />
-			<CardGrid cardGridConfig={servicesConfig} />
-			<ServiceArea serviceAreaConfig={serviceAreaConfig} />
+			<TwoColumn twoColumnConfig={lawnMaintenanceConfig} />
+			<TwoColumn twoColumnConfig={moistureControlConfig} />
 			<TwoColumn twoColumnConfig={aboutConfig} />
-			<Steps stepsConfig={stepsConfig} />
 			<ContactForm />
 		</main>
 	);

@@ -13,7 +13,7 @@ const brandLogo = {
 
 const mission = {
 	prefix:
-		"Reliable, straightforward lawn care for homeowners across North Texas —",
+		"Reliable, straightforward lawn care for homeowners across North Texas. Ready to",
 	linkText: "get a free quote",
 	linkHref: "#quote",
 	detail: "Locally owned and operated.",
@@ -25,9 +25,7 @@ const quickLinks = {
 	heading: "Quick Links",
 	links: [
 		{ label: "Services", href: "#services" },
-		{ label: "Service Areas", href: "#service-areas" },
 		{ label: "About", href: "#about" },
-		{ label: "How It Works", href: "#steps" },
 	],
 };
 
@@ -62,7 +60,7 @@ export default function Footer() {
 						<Link
 							href="/"
 							className="footer__brand"
-							aria-label={`${brandLogo.alt} — go to homepage`}
+							aria-label={`${brandLogo.alt}, go to homepage`}
 						>
 							<Image
 								src={brandLogo.src}

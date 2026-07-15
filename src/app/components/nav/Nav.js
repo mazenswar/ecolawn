@@ -23,16 +23,8 @@ const links = [
 		href: "#services",
 	},
 	{
-		label: "Service Areas",
-		href: "#service-areas",
-	},
-	{
 		label: "About",
 		href: "#about",
-	},
-	{
-		label: "How It Works",
-		href: "#steps",
 	},
 ];
 
@@ -127,7 +119,7 @@ export default function Nav() {
 				<Link
 					href={homeHref}
 					className="nav__logo"
-					aria-label={`${logo?.alt ?? "Home"} — go to homepage`}
+					aria-label={`${logo?.alt ?? "Home"}, go to homepage`}
 					onClick={handleLinkClick}
 				>
 					{logo ? (
