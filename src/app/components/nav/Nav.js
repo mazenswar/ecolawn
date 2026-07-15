@@ -19,8 +19,12 @@ const logo = {
 
 const links = [
 	{
-		label: "Services",
+		label: "Lawn Maintenance",
 		href: "#services",
+	},
+	{
+		label: "Moisture Control",
+		href: "#moisture-control",
 	},
 	{
 		label: "About",

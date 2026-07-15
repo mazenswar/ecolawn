@@ -24,7 +24,8 @@ const inclusion = null;
 const quickLinks = {
 	heading: "Quick Links",
 	links: [
-		{ label: "Services", href: "#services" },
+		{ label: "Lawn Maintenance", href: "#services" },
+		{ label: "Moisture Control", href: "#moisture-control" },
 		{ label: "About", href: "#about" },
 	],
 };
