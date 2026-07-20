@@ -7,10 +7,9 @@ import ContactForm from "./components/sections/contactForm/ContactForm";
 
 const heroConfig = {
 	eyebrow: "North Texas Lawn Care",
-	heading:
-		"Fertilization, Weed Control, Insect Control & Moisture Control",
+	heading: "Reliable lawn care for your North Texas lawn",
 	subheading:
-		"Professional lawn care in the North DFW area, including surface and sub-surface insect protection.",
+		"Fertilization, weed control, and insect protection for homes across The Colony, Frisco, McKinney, Plano, Lewisville, Grapevine, Carrollton, Little Elm, Prosper and surrounding areas",
 	cta: site.phone
 		? {
 				text: `Call ${formatPhone(site.phone)}`,
