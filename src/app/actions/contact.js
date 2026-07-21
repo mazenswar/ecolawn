@@ -2,6 +2,7 @@
 "use server";
 
 import site from "../../../config/site";
+import { buildQuoteRequestEmail } from "../../../config/emailTemplate";
 
 const SERVICE_LABELS = {
 	"lawn-maintenance": "Lawn Maintenance Program",
@@ -11,6 +12,14 @@ const SERVICE_LABELS = {
 };
 
 export async function submitContactForm(formData) {
+	// Honeypot — real users never see or fill this field in; if it's
+	// populated, the submission almost certainly came from a bot. Pretend
+	// success so the bot doesn't know to try a different approach.
+	const honeypot = formData.get("company")?.toString().trim();
+	if (honeypot) {
+		return { success: true };
+	}
+
 	const name = formData.get("name")?.toString().trim();
 	const email = formData.get("email")?.toString().trim();
 	const phone = formData.get("phone")?.toString().trim();
@@ -35,6 +44,14 @@ export async function submitContactForm(formData) {
 	}
 
 	const serviceLabel = SERVICE_LABELS[service] ?? service;
+	const { subject, html, text } = buildQuoteRequestEmail({
+		name,
+		email,
+		phone,
+		serviceAddress,
+		serviceLabel,
+		message,
+	});
 
 	try {
 		const res = await fetch("https://api.resend.com/emails", {
@@ -45,20 +62,12 @@ export async function submitContactForm(formData) {
 			},
 			body: JSON.stringify({
 				from: "EcoLawn Solutions Website <noreply@ecolawn.us>",
-				to: site.email,
+				// to: site.email,
+				to: "ecolawn.webadmin@gmail.com",
 				reply_to: email,
-				subject: `New quote request from ${name}`,
-				text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService address: ${serviceAddress}\nService: ${serviceLabel}\n\nMessage:\n${message || "(none)"}`,
-				html: `
-					<p><strong>Name:</strong> ${name}</p>
-					<p><strong>Email:</strong> ${email}</p>
-					<p><strong>Phone:</strong> ${phone}</p>
-					<p><strong>Service address:</strong> ${serviceAddress}</p>
-					<p><strong>Service:</strong> ${serviceLabel}</p>
-					<br />
-					<p><strong>Message:</strong></p>
-					<p>${(message || "(none)").replace(/\n/g, "<br />")}</p>
-				`,
+				subject,
+				text,
+				html,
 			}),
 		});
 
