@@ -1,6 +1,10 @@
 import React from "react";
 import { generateMeta } from "../../../config/metadata";
+import site from "../../../config/site";
+import { formatPhone } from "../../../config/formatPhone";
 import LegalContent from "../components/sections/legalContent/LegalContent";
+
+const phone = formatPhone(site.phone);
 
 export const metadata = generateMeta({
 	title: "Privacy Policy",
@@ -26,8 +30,9 @@ const privacyConfig = {
 				"Your name",
 				"Email address",
 				"Phone number",
-				"Zip code",
-				"Approximate lawn size",
+				"Service address",
+				"The service you're interested in",
+				"Any additional details you share in the message field",
 			],
 		},
 		{
@@ -54,7 +59,7 @@ const privacyConfig = {
 			id: "data-retention",
 			heading: "Data Retention",
 			paragraphs: [
-				"We retain contact form submissions for as long as needed to respond to your request and provide service. If you'd like your information removed from our records, contact us at (817) 913-3284 and we'll take care of it.",
+				`We retain contact form submissions for as long as needed to respond to your request and provide service. If you'd like your information removed from our records, contact us at ${phone} and we'll take care of it.`,
 			],
 		},
 		{
@@ -69,7 +74,7 @@ const privacyConfig = {
 			heading: "Contact Us",
 			paragraphs: [
 				"If you have any questions about this privacy policy or how your information is handled, contact us at:",
-				"EcoLawn Solutions<br />(817) 913-3284",
+				`EcoLawn Solutions<br />${phone}`,
 			],
 		},
 	],

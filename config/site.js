@@ -7,7 +7,7 @@ const site = {
 	name: "EcoLawn Solutions",
 	tagline: "Reliable lawn care for North Texas homes",
 	description:
-		"EcoLawn Solutions provides lawn maintenance, fertilization, weed control, and moisture control for homeowners across The Colony, Frisco, McKinney, Plano, Lewisville, Grapevine, Carrollton, and Little Elm, TX.",
+		"EcoLawn Solutions provides lawn maintenance, fertilization, weed control, and moisture control for homeowners across The Colony, Frisco, McKinney, Plano, Lewisville, Grapevine, Carrollton, Little Elm, and Prosper, TX.",
 	url: "https://ecolawn.us",
 	locale: "en_US",
 	// Analytics
@@ -16,7 +16,7 @@ const site = {
 		gtm: "GTM-MKGG36W6", // "GTM-XXXXXXX" or null
 	},
 	// Contact
-	email: "service@ecolawn.us",
+	email: "zachariah@ecolawn.us",
 	phone: "+18179133284",
 
 	// Towns served — single source of truth, used by both the homepage
@@ -30,6 +30,7 @@ const site = {
 		"Grapevine",
 		"Carrollton",
 		"Little Elm",
+		"Prosper",
 	],
 	// address: {
 	// 	street: "801 Route 1 PMB 1035",

@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
 				<Footer />
 			</body>
 			{/* Analytics — only renders if IDs are set */}
-
+			{site.analytics?.ga4 && <GoogleAnalytics gaId={site.analytics.ga4} />}
 			{site.analytics?.gtm && <GoogleTagManager gtmId={site.analytics.gtm} />}
 		</html>
 	);
