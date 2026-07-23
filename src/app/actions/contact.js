@@ -62,7 +62,7 @@ export async function submitContactForm(formData) {
 			},
 			body: JSON.stringify({
 				from: "EcoLawn Solutions Website <noreply@ecolawn.us>",
-				to: "hayden.zachariah5@gmail.com",
+				to: site.email,
 				reply_to: email,
 				subject,
 				text,
